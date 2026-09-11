@@ -1,0 +1,9 @@
+MAP 10 — Przechwycenie Sygnału — FABUŁA 96x96 plateau — Wieża kontrolna
+Fabuła: Płaskowyż z wieżą b_control_tower — ostatni sygnał EON-2. Gracz naprawia wieżę (Yuri+Maya 15s) i nadaje sygnał PZ10_02 — broń wieży 10 min na Legion, ale Alya słyszy i wysyła 3 fale. Miny jako obrona — minowanie 3 kierunków. To test taktyki 3-kierunkowej przed 14 krater.
+Strefy fabularne:
+- Start pd 48,80 drużyna 5+branch HT×2 — wieża 48,48 na wzgórzu, wejścia 3: pn 48,10 wsch 80,48 zach 16,48
+- Wieża b_control_tower HP 1000 Ł /800 Ś /500 T — naprawa 15s Inżynier + Naukowiec, potem sygnał 15s PZ10_01 (Yuri) → wieża strzela 60 dmg/s 10 min
+- Miny 12 Ł /10 Ś /6 T do rozstawienia PZ10_03 — stawiasz 2s per mina na ścieżkach fal
+- Fale Legion 3 kierunki co 60s: pn ciężkie HT, wsch piechota, zach Apemen (jeśli Ur nie oswojony → wrogo, jeśli oswojony → pomaga)
+Edytor: plateau wiatr, wieża centralna, widok na krater Eos w oddali (hint 11-13). Timer nadania 15s, potem obrona 8-12 min per poziom. Voices Maya/Viktor.
+Po misji: masz koordynaty EON-2 (odblokowuje 11 indoor).

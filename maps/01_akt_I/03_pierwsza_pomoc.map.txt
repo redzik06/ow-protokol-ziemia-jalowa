@@ -1,0 +1,9 @@
+MAP 03 — Pierwsza Pomoc — FABUŁA 80x80 snow_ruins — Posterunek medyczny
+Fabuła: Posterunek Sojuszu Przymierza, gdzie utknęła Lina Ortega Needle (31, naukowiec-medyk) z 4 rannymi. Choroba pyłowa — pył kryształu Alaskitu w płucach. Miron Karpov przez radio rozkazuje Drachevowi wrócić do Kirowa (PZ03_02) — Viktor wybiera Sojusz (PZ03_03). Yuri pomaga linie.
+Strefy fabularne:
+- Start zachód 15,40 drużyna 5 + HT 14,40 (paliwo niskie)
+- Centralna apteka b_lab 40,40 — Lina Ortega + 3 rannych łóżka, dialog PZ03_01, leczy tylko w budynku (IsInBuilding)
+- 4 schrony-budynki: 25,25 / 55,25 / 25,55 / 55,55 — chorzy tracą HP -1/-2/-3/s (zamieć 15/12/9 min) poza budynkiem
+- Filtry: 6 filtrów crate Ł /5 Ś/T — podnosi HP +20, timer dekontaminacji PZ03_06
+- Radio RU 60,60 maszt — wyzwala rozkaz Mirona dla Viktora
+Edytor: snow_ruins, zamieć cząsteczki, 4 budynki b_shelter, apteka centralna, mgła. Mechanika Choroba Pyłowa 99/03. Po misji Lina dołącza informacyjnie (nie persistent) ale daje filtry na 04-05.

@@ -1,0 +1,9 @@
+MAP 15 — Ostatni Świt — FABUŁA 80x80 indoor_server — Serwerownia Eos, finał 3 zakończenia
+Fabuła: FINAŁ — serwerownia Eos filtr b_siberite_power 40,40 + terminal 40,45 — serce EON-2. Tylko Naukowiec (Yuri/Farid) uruchamia 40s Ł /60s Ś /90s T. 3 zakończenia via CountProfession (ilość żywych z 01-14): A Sojusz (≥2 naukowców Yuri+Maya ocala) filtr stabilny Motherlode osada, B Legion (≥2 mechaników Elena+Viktor) EON-2 twierdza handel, C Ziemia Jałowa (reszta ginie) filtr 20% jałowa epoka kamienia. Elena vs Alya PZ15_01/02, Farid zdradza Alyę PZ15_03 jeśli go masz.
+Strefy fabularne:
+- Serwerownia indoor_server 40,40 filtr centralny HP 1200 Ł /800 Ś /400 T — wąskie wejścia 2 kafle do obrony, brak wsparcia z zewnątrz, tylko drużyna ocalona z 01-14 (persistent tylko żywi)
+- Terminal 40,45 — Naukowiec 40/60/90s hack PZ15_04, w tym czasie fale 4×120s Ł /6×90s Ś /8×60s non-stop T (8 Arabów co 60s) — bez HT (HT zostają na zewnątrz 40,70)
+- Finał dialog: Elena vs Alya 40,30 — jeśli Farid żyje (rekrut_06=2) on zdradza Alyę i ginie z nią PZ15_03 odblokowuje A, inaczej Elena zabija Alyę
+- 3 zakończenia Cutscenka: A log Sojuszu + Apemeni osada, B log Legion + handel Syberytem, C log jałowa + epoka kamienia — zależne od CountProfession klasa scientistic vs mechanic
+Edytor: indoor_server 80×80, serwerownia 40×40, filtry 3 typy wiszą, światła awaryjne. SAIL 15_misja.sail PZ15_05/06/07/08 + YouWin/YouLose. Solucja lista 3 warianty + 3 endingi.
+To ostatni test składu — tylko ludzie przeprowadzeni przez 01-14 decydują o końcu.

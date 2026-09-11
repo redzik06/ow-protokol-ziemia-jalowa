@@ -1,0 +1,9 @@
+MAP 12 — Czerwony Zmierzch — FABUŁA 128x48 ice_river — Koryto rzeki, poślizg, pojedynek
+Fabuła: Kulminacja Viktor Drachev (RU żołnierz) vs Karim Al-Rashid (Legion dezerter) — jeden zginie. Pościg za dowódcą Legionu Czerwonego Sztandaru (opancerzony Half-Tracked). Rzeka lodowa 12 kafli szerokości, poślizg 1.1x Ł /1.3x Ś /1.5x T (SetSpeed *1.3, SetTurnRate *0.5). Mastodon Bura Karima (jeśli masz 2 HT z 08) nie ślizga — jedyny stabilny.
+Strefy fabularne:
+- Start zachód 10,24 konwój 2 HT + Mastodon 11,26 (Half-Tracked Karima) + drużyna 5 — rzeka przez całą mapę x=10..118, y=18..30 lód
+- Dowódca Legion 110,24 w Half-Tracked 1200 HP + 4 eskorta piechoty — AI RetreatAt 30% HP, pościg
+- Brzegi 0-18 i 30-48 nieprzejezdne (skały) — tylko rzeka przejezdna, ślizg, trudne hamowanie
+- Wybór fabularny 60,24 wąwóz — dialog PZ12_01 Viktor vs PZ12_02 Karim: Ty zdradziłeś Legion, ja rozkazy... — szturm (Viktor niszczy dowódcę, Karim ranny PZ12_04) vs negocjacje (Karim zabija dowódcę, Viktor ginie osłaniając PZ12_05) — zależnie od dyskusji
+- Jeśli Karim zginie PZ12_03 tracisz Mastodona na zawsze — w 14/15 brak half-tracka
+Edytor: ice_river, SetFriction 0.2 via SAIL Every 0$5, rzeka 12 kafli, brzegi blocked. Skalowanie poślizg + HP dowódcy. SAIL 12_misja.sail voices Viktor rosyjski /Karim arabski. Konsekwencja przenoszona via GlobalVar viktor_12/karim_12.

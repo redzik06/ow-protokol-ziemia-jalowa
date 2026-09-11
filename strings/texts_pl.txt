@@ -1,0 +1,122 @@
+; texts_pl.txt — Protokół Ziemia Jałowa — Teksty dubbingowe (przyszły dubbing, nowa historia nie związana z ori)
+; Format OW: ID = "Tekst" — ForceSay(unit, 'ID') w SAIL missions/01-15_misja.sail
+; Vault: 05 Fabuła/08 - Dialogi Postapo — Czarny Humor.md, 01 - Bohaterowie Drużyny.md
+; Zasada: postapo + bardzo czarny humor, poprawna pisownia PL obligatoryjnie, 3 poziomy trudności te same teksty (hints osobno)
+; Kodowanie: UTF-8
+
+; === MISJA 01 — Ostatnia Iskra ===
+PZ01_01 = "Alpha padła. Został HT, pięciu ludzi i klucz 17. Nie pytaj, gdzie reszta — tam, gdzie my będziemy za godzinę, jeśli nie ruszymy dupy."
+PZ01_02 = "Nie umieram. Tylko testuję grawitację."
+PZ01_03 = "Dziennik bazy: „Wszystko działa. Żyła pod nami. Legion idzie.” — Rook miał rację."
+PZ01_HINT_L = "Łatwy: masz 20 minut i 2 patrole. Poruszaj się cicho. HT 36,36."
+PZ01_HINT_M = "Poruszaj się cicho. Każdy strzał to wataha Małpoludów. HT 36,36."
+PZ01_HINT_H = "Trudny: 10 minut, 4 patrole, HT 50% HP. Powodzenia."
+
+; === MISJA 02 — Droga przez Rdzę ===
+PZ02_01 = "Kanion Wiatru — jedyna droga. I jedyny powód, by tu wracać, to ropa."
+PZ02_02 = "To nie ropa. To krew bitwy. Ale pojadę i na tym."
+PZ02_03 = "Hałas! Wataha Małpoludów biegnie na strzał!"
+PZ02_04 = "Zatankowano +30. Paliwo: %s%."
+PZ02_HINT_L = "Łatwy: wystarczą 2 wraki, 3 patrole. Tankuj Inżynierem 5 sekund przy wraku."
+PZ02_HINT_H = "Trudny: 4 wraki, 7 patroli, spalanie x2. Każdy postój to ryzyko."
+
+; === MISJA 03 — Pierwsza Pomoc ===
+PZ03_01 = "Filtr? Mam. Działa? Też mam. Oba nie naraz — wybieraj."
+PZ03_02 = "Miron Karpov przez radio: „Drachev, wróć do Kirowa albo zgiń jako dezerter.”"
+PZ03_03 = "Miałeś wrócić. Ja wybrałem Sojusz."
+PZ03_04 = "Oddychaj płytko. Jak umrzesz, to przynajmniej czysto."
+PZ03_05 = "12 minut do zamieci. 12 minut do bycia pyłem. Romantyczne."
+PZ03_06 = "Dekontaminacja: %s +20 HP. Filtry: %s."
+
+; === MISJA 04 — Cmentarzysko Czołgów ===
+PZ04_01 = "Cicho. Każdy strzał to zaproszenie dla Małpoludów. A nie jesteśmy gospodarzami."
+PZ04_02 = "Ur."
+PZ04_03 = "Zgadzam się."
+PZ04_04 = "Demontaż w toku... %ss."
+PZ04_05 = "Część zdemontowana! %s/4."
+PZ04_06 = "Hałas! Wataha %s Małpoludów biegnie!"
+
+; === MISJA 05 — Brama na Północ ===
+PZ05_01 = "Jak wybuchnie za wcześnie, to przynajmniej nie usłyszę narzekań."
+PZ05_02 = "Przepraszam, Siergiej. Ale ty byś nas zostawił. Ja nie."
+PZ05_03 = "Ładunek zcraftowany: %s/3."
+PZ05_04 = "Podkładanie ładunku... 10 sekund."
+PZ05_05 = "Ładunek podłożony! Wycofaj się!"
+PZ05_06 = "Barykada zniszczona! Uciekaj HT na północ!"
+PZ05_07 = "Maya zginęła przy podkładaniu — w 14 nie będzie inżyniera!"
+
+; === MISJA 06 — Wolne Targowisko ===
+PZ06_01 = "Mam wszystko. Ropę, filtry, nadzieję. Nadzieja najdroższa. I najbardziej przeterminowana."
+PZ06_02 = "Mogę was zabić, mogę was kupić. To drugie droższe. Wybierajcie."
+PZ06_03 = "Zostałem, bo Elena potrzebuje młotka. A wy potrzebujecie cudu. Młotek mam."
+PZ06_04 = "Leczę tych, których jutro postrzelicie. Stabilne zatrudnienie."
+PZ06_05 = "Tu się nie strzela, tu się handluje. Poza Enklawą — róbta co chceta. Tu crates rządzą, nie flagi."
+PZ06_06 = "Wybrano: Wiktor Volkov (Sojusz, -20% paliwo). Alya wrogo od 12."
+PZ06_07 = "Wybrano: Farid Al-Hadi (Legion, medyk, Alya neutral do 12)."
+
+; === MISJA 07 — Czysty Tlen ===
+PZ07_01 = "Prąd jest. Dopóki ktoś nie kichnie."
+PZ07_02 = "Wieżyczka przejęta!"
+PZ07_03 = "Generator padł! Wieżyczki offline!"
+PZ07_04 = "Woda pod zmarzliną — jedyna czysta. Dlatego wszyscy o nią walczą."
+
+; === MISJA 08 — Wzmocnienie Konwoju ===
+PZ08_01 = "Spawaj szybciej. Legion puka. I nie puka delikatnie."
+PZ08_02 = "Silnik syberytowy to bzdura. Daj ropę i młotek, pojadę na Księżyc."
+PZ08_03 = "Warsztat: %s%."
+PZ08_04 = "Drugi pojazd gotowy! Konwój wzmocniony."
+
+; === MISJA 09 — Anomalia Łza ===
+PZ09_01 = "Sublimacja odsłoniła metal — to EON-2! Leżał pod lodem 6 miesięcy, niewidoczny."
+PZ09_02 = "A ja myślałem, że to tylko ładne światło..."
+PZ09_03 = "Anomalia Źródło: +30 HP!"
+PZ09_04 = "Anomalia Cofka: teleport wstecz!"
+PZ09_05 = "Anomalia Zwarcie: HT wyłączony!"
+
+; === MISJA 10 — Przechwycenie Sygnału ===
+PZ10_01 = "Wieża naprawiona! Nadaj sygnał Naukowcem 15 sekund."
+PZ10_02 = "Sygnał wysłany! Broń wieży 10 minut! Alya słyszy..."
+PZ10_03 = "Mina postawiona. Zostało: %s."
+
+; === MISJA 11 — Zamarznięta Pamięć ===
+PZ11_01 = "Ciemno jak w dupie. I tak samo zimno."
+PZ11_02 = "Latarka działa. Dopóki bateria. Bateria nie działa. Wnioski?"
+PZ11_03 = "Wnioski: umrzemy w ciemności, ale stylowo."
+PZ11_04 = "Drzwi otwarte!"
+PZ11_05 = "Rdzeń EON-2: log Mirona Karpova — kody do 13. Echo-baz: „Zapasowy moduł RU, błąd 47 km.”"
+PZ11_06 = "Bateria latarki słabnie — doładuj przy generatorze."
+
+; === MISJA 12 — Czerwony Zmierzch ===
+PZ12_01 = "Ty zdradziłeś Legion, ja zdradziłem rozkazy. Jesteśmy kwita. Teraz spierdalaj, zanim zmienię zdanie."
+PZ12_02 = "Chcesz gonić dowódcę po lodzie? To nie pościg, to samobójstwo na łyżwach."
+PZ12_03 = "Karim zginął — tracisz Mastodona Bura na zawsze!"
+PZ12_04 = "Szturm: Viktor niszczy dowódcę! Karim ranny, ale żyje."
+PZ12_05 = "Negocjacje: Karim zabija dowódcę, Viktor ginie osłaniając!"
+
+; === MISJA 13 — Baza Eos — Przedpola ===
+PZ13_01 = "Terminal prosi o hasło. Hasło: „nie zabijaj mnie”. Wpisuję."
+PZ13_02 = "Terminal przejęty! %s/4."
+PZ13_03 = "Pierścień Eos wyłączony! Droga do krateru otwarta."
+
+; === MISJA 14 — Bitwa w Kraterze ===
+PZ14_01 = "Podpisałeś, Jurij? Teraz patrz, jak działa długopis."
+PZ14_02 = "Podpisałem. Teraz skreślam."
+PZ14_03 = "Silos rozbrojony: %s/3."
+PZ14_04 = "Mam kod Beta. Mam dość. Bierzcie i puśćcie mnie."
+PZ14_05 = "Yuri → Miron Karpov: strzał. Uczeń zabił mistrza."
+
+; === MISJA 15 — Ostatni Świt ===
+PZ15_01 = "EON-2 jest mój. Był mój, zanim wy nauczyliście się go pisać."
+PZ15_02 = "To go sobie zabierz. Tylko najpierw przejdź przeze mnie. I przez mój klucz 17."
+PZ15_03 = "Uczyłaś mnie leczyć. Teraz uczę cię umierać. Symetria."
+PZ15_04 = "Uruchamianie filtra... %ss."
+PZ15_05 = "Zakończenie A: Sojusz — filtr stabilny, Motherlode ocalony, osada Sojusz+Apemeni."
+PZ15_06 = "Zakończenie B: Legion — EON-2 jako twierdza, handel Syberytem."
+PZ15_07 = "Zakończenie C: Ziemia Jałowa — filtr 20%, niecka jałowa, epoka kamienia."
+PZ15_08 = "Filtr zniszczony! Ziemia Jałowa!"
+
+; === GLOBALNE ===
+PZ_HINT_PALIWO = "PALIWO: %s%."
+PZ_HINT_FILTRY = "Filtry: %s."
+PZ_ECHO_BAZ = "Echo-baz: „Stabilność: 73%. Szansa przeżycia: 12%. Miłego dnia.”"
+PZ_ROOK = "Rook: „Filtr? Mam. Działa? Też mam. Oba nie naraz.”"

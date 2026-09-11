@@ -1,0 +1,9 @@
+MAP 14 — Bitwa w Kraterze — FABUŁA 128x128 crater — Szochowa, 3 silosy, podział sił
+Fabuła: Krater Szochowa — 3 silosy NW/NE/S z ru_siberium_rocket (rakiety Mirona Karpova do Protokołu Ziemia Jałowa). Behemoth — prototyp HT Legionu mini-boss Ś/T. Podział sił: musisz rozdzielić HT×2 na 3 silosy (30/60/80 krat odległości per poziom). Ostatni silos S — Yuri spotyka Mirona Karpova (57, blizna) i zabija mistrza PZ14_05 (uczeń). Kod Chen Beta do przekonania jeśli Farid żyje.
+Strefy fabularne:
+- Start centrum 64,64 rdzeń EON-2 — drużyna dzieli się: HT1 NW 20,20 silos1, HT2 NE 100,20 silos2, pieszo S 64,90 silos3 (lub odwrotnie — wybór taktyki)
+- Silos 1 NW 20,20 Sokolov Alfa strzeżony 2 RU (łatwy) — rozbrajanie Inżynier 10s Ł /15s Ś /20s T (bez Mayi 30s)
+- Silos 2 NE 100,20 Chen Beta + Behemoth 1200 HP na Ś/T (mini-boss Half-Tracked z Siberite) — dialog PZ14_04 Chen: Mam kod Beta, puśćcie mnie
+- Silos 3 S 64,90 Miron Karpov 57 w b_shelter + 4 eskorta — finał Yuri→Miron PZ14_01/02/05: Podpisałeś, Jurij? Teraz patrz... / Podpisałem. Teraz skreślam. — strzał
+- Fale 6/8/10 piechoty co 90/45/30s od krawędzi, lód na T, silosy daleko 30/60/80 krat
+Edytor: crater 128×128, krater środek, 3 rogi silosy b_rocket_silo, fale Legion+RU. SAIL 14_misja.sail voices Miron rosyjski akcent stary, Yuri rosyjski. Konsekwencja: jeśli Farid żyje, łatwiej przekonać Chena.

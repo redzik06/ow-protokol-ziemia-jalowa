@@ -1,0 +1,8 @@
+MAP 08 — Wzmocnienie Konwoju — FABUŁA 80x64 industrial — Garaż ZSRR porzucony
+Fabuła: Porzucony garaż ZSRR — 4 wraki części do złożenia drugiego HT (gąsienice, silnik combustion, pancerz, wieża). Wiktor majstruje (+progress jeśli masz go), Maya spawa. Legion patroluje obrzeża — cichy loot albo walka. Drugi pojazd = podwójna szansa w 12 lód i 14 krater.
+Strefy fabularne:
+- Warsztat b_factory 40,32 centralny — craft progress 0-100% tylko gdy Mechanik/Inżynier w środku area_warsztat
+- 4 części-crate: 10,20 silnik (strzeżona na T przez 3 Legion), 70,20 gąsienice, 10,50 pancerz, 70,50 wieża — każda niesie 5s do warsztatu
+- Fale Legion co 120s Ł 4 /60s Ś 6 /45s T 8 od pn 40,5 — jeśli masz Wiktora progress +2 Ł /+1 Ś /+0.7 T vs bez Wiktora +1/+1/+1
+- HT start 40,55 + drużyna — obrona 60s po złożeniu 100% → YouWin PZ08_04, jeśli warsztat zniszczony przed 100% → YouLose
+Edytor: industrial hala bez prądu, suwnica, ciemno. Mechanika 08_misja.sail: progress, crates, fale skalowane. Voices PZ08_01 Maya, PZ08_02 Wiktor. Po 08: jeśli brak 2 HT → 12 trudniejszy poślizg (1 pojazd łatwiej stracić)

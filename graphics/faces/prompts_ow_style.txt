@@ -1,0 +1,39 @@
+; prompts_ow_style.txt — Protokół Ziemia Jałowa — 16 prompty 1:1 styl Original War (Heike Steyer)
+; Użycie: skopiuj BASE + PER POSTAĆ do SD/MJ/DALL·E, seed 4521, --ar 1:1, 96x96 BMP 24-bit
+; Vault: 06 Grafika/00 - Avatary - Specyfikacja.md  Faces: graphics/faces/*.bmp = characters.txt Face=
+
+BASE_OW_STYLE = postapocalyptic portrait, Original War game style by Heike Steyer, painted semi-realistic not photoreal not cartoon, 96x96 bust 3/4, harsh top-left light, dusty grain 2%, muted earth palette (ochre, rust, snow grey), single character centered face 60% frame, looking slightly at camera, neutral expression battle-worn, grey background 128,128,128, no text no logo, sharp focus face, blurred bunker background, premium mod quality
+
+; --- DRUŻYNA GŁÓWNA 5 ---
+ELENA_VARGA = BASE_OW_STYLE + " 29yo female american mechanic Detroit, short dark brown ponytail, scar on left eyebrow, oil smudge on right cheek, tired hard eyes, key 17 brass pendant on cord, worn workshop jacket with patches, holding wrench close, postapo leader vibe"
+YURI_KAMAROV = BASE_OW_STYLE + " 41yo male russian scientist Leningrad, cracked round glasses, grey temples short hair, thin face hoarse, cynical half-smile, institute grey coat with siberite crystal pin, russian accent visual, holding notebook with formulas"
+VIKTOR_DRACHEV = BASE_OW_STYLE + " 33yo male russian soldier buzzcut, strong jaw scar on chin, rough stubble, intense eyes, Kirow infantry uniform, bazooka blurred behind, medal dulled, soldier honour vibe"
+MAYA_TORRES = BASE_OW_STYLE + " 24yo female american engineer, long dark ponytail with oil streaks, young nervous quick eyes, freckles, Epsilon jumpsuit, holding soldering tool, eager"
+KARIM_ALRASHID = BASE_OW_STYLE + " 35yo arab male desert warrior New Kabul, short 3-day beard, beige keffiyeh around neck, warm brown eyes honorable, desert camo vest, Mastodon leather strap"
+
+; --- BRANCH 06 ---
+WIKTOR_VOLKOV = BASE_OW_STYLE + " 38yo male russian mechanic older, thick mustache, hoarse fatherly smile, work jacket oil stains, wrench in hand, Sojusz mentor"
+FARID_ALHADI = BASE_OW_STYLE + " 32yo arab male medic calm soft, short trimmed beard, gentle eyes, white coat with red cross armband, holding medkit, Legion but humane"
+
+; --- ANTAGONIŚCI ---
+ALYA_HASSAN = BASE_OW_STYLE + " 38yo arab female villain Legion commander, dark olive keffiyeh, scar bridge of nose, cold charismatic low-light, sharp eyes, half-track commander uniform, New Kabul heritage"
+MIRON_KARPOV = BASE_OW_STYLE + " 57yo male russian general, short grey hair, deep scar left cheek glowing faint green siberite, authoritative stern, RU uniform with 2004 Protocol badge, old scarred"
+
+; --- POBOCZNI ---
+ROOK_NOWAK = BASE_OW_STYLE + " 44yo male american trader enclave, slightly overweight, baseball cap backwards, cunning friendly smile, vest with many pockets, crates background"
+LINA_ORTEGA = BASE_OW_STYLE + " 31yo female american medic short pixie hair, dark circles under eyes stimulant, syringe in chest pocket, tired fast, Needle nickname"
+UR_APEMAN = BASE_OW_STYLE + " apeman chieftain male adult, grey thick fur, scar over left eye, intelligent eyes not beast, bone necklace with siberite shard, nature faction, honourable"
+SOKOLOV = BASE_OW_STYLE + " 45yo male russian officer Code Alpha, tired mustache, torn RU uniform, holding encrypted scroll, veteran of EON-1"
+CHEN = BASE_OW_STYLE + " 36yo male russian technician Code Beta, thin glasses pale face, nervous, holding lab tablet with Gamma code"
+REYES = BASE_OW_STYLE + " 28yo male american soldier Code Gamma, young helmet aside, eager, US Epsilon insignia, holding EON-2 keycard"
+ECHO_BAZ = BASE_OW_STYLE + " female AI hologram not human, green siberite crystal cluster floating, glitch scanlines, synthetic face outline faint, server room reflection, no flesh"
+
+; PARAMETRY AI
+; Seed: 4521 (ten sam dla wszystkich 16 dla spójności stylu)
+; Steps: 30, CFG 7, Sampler DPM++ 2M Karras
+; Negative: cartoon, anime, 3d render, plastic skin, overexposed, text, watermark, two faces, helmet covering face (except Reyes), sunglasses, modern city
+; Post: GIMP 96x96, add 2% grain, export BMP 24-bit, check histogram not washed
+
+; KOLEJNOŚĆ GENEROWANIA
+; Najpierw 3 główne do weryfikacji: ELENA_VARGA, YURI_KAMAROV, VIKTOR_DRACHEV
+; Potem po akceptacji stylu reszta 13 tym samym seed+base

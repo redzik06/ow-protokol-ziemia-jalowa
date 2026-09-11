@@ -1,0 +1,9 @@
+MAP 09 — Anomalia Łza — FABUŁA 112x112 wasteland_anomaly — Strefa Syberytu 0
+Fabuła: Strefa zerowa — sublimacja Syberytu odsłoniła wrak EON-2 pod lodem (hint do 11). 3 stałe typy anomalii (nie RNG!): Źródło (zielony +30HP), Cofka (niebieski teleport -5 krat w tył), Zwarcie (czerwony wyłącza HT 10s). Kłótnia Yuri (nauka) vs Karim (wiara) o naturze Łzy — PZ09_01/PZ09_02. Nauka omijania, nie losowości.
+Strefy fabularne:
+- Start pd-zach 20,90 HT×2 + drużyna 5+branch — labirynt anomalii do celu 90,20 wrak EON-2 b_lab
+- 6 stref kołowych radius 5: 30,70 Źródło, 50,70 Cofka, 70,70 Zwarcie, 30,40 Cofka, 50,40 Zwarcie, 70,40 Źródło — kolory, cooldown 3s Ł /5s Ś /7s T per pojazd (placeholder HasCooldown)
+- Wrak EON-2 90,20 — log Mirona Karpova (kod do 13) + Echo-baz glitch PZ09_03-05
+- Ekwipunek: 2 HT muszą przejechać bez zwarć — Zwarcie na T wyłącza oba HT na 15s i przywołuje patrol Apemen
+Edytor: wasteland_anomaly kratery, świecący Syberyt b_siberite_mine, efekty cząsteczek per typ. Mechanika 04 - System Anomalie.md poprawiona HT vs HT2. SAIL 09_misja.sail voices Yuri rosyjski akcent, Karim arabski.
+Przejście uczy gracza — w 10 miny + anomalie jako pułapki.

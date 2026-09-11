@@ -1,0 +1,8 @@
+MAP 04 — Cmentarzysko Czołgów — FABUŁA 100x100 battlefield noc — Pole bitwy 2M lat
+Fabuła: Pole bitwy gdzie zginęła 1. ekspedycja US sprzed 6 mies. — 4 wraki US Heavy Tracked. Drużyna potrzebuje części (gąsienice, wieża) do HT. Małpoludy (Apemen) — plemię Ura nocą patroluje. Cicha misja: hałas → wataha. Ur wódz obserwuje gracza z krateru 70,70.
+Strefy fabularne:
+- Start południe 50,85 drużyna 5 noc latarki słabe
+- 4 wraki HT: 30,30 (wieża us_heavy_gun), 70,30 (silnik engine_combustion), 30,70 (pancerz), 70,70 (gąsienice + Ur krater obok) — każdy demontaż Maya 10/15/20s + Yuri 5s (Mechanik+Naukowiec)
+- Patrole Małpoludów Apemen 4 grupy: 20,20 80,20 20,80 80,80 — na hałas (strzał/demontaż bez tłumika) wataha 2/3/4 biegnie PZ04_06
+- Ur 70,70 — jeśli podejdziesz bez strzału i z Karimen (arabski akcent rozumie), oswojenie — dołącza w 14 jako wsparcie Apemen (nie musisz zabijać)
+Edytor: battlefield kratery, wraki b_factory zrujnowane, noc visibility 8/6/5 krat per poziom, dźwięk tłumiony. Skalowanie demontaż 10/15/20s, hałas wrażliwość Ł niska / T wysoka. PZ04_01 Maya, PZ04_02 Ur.

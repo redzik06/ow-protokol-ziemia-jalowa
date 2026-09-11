@@ -1,0 +1,9 @@
+MAP 02 — Droga przez Rdzę — FABUŁA 96x48 canyon/desert — Kanion Wiatru
+Fabuła: Jedyna droga na północ przez Kanion Wiatru — pole bitwy sprzed 2 miesięcy (wraki US HT vs RU Half-Tracked). Konwój potrzebuje ropy custom mat_oil z wraków. Pojazd HT (z 01) jedzie liniowo A→B. Wiktor Volkov widział tu śmierć towarzyszy — notka fabularna.
+Strefy fabularne:
+- Start A 10,24 HT + drużyna 5, paliwo 100% custom int fuel (spalanie 1/1/2 per poziom)
+- 5 wraków fabularnych: 25,24 (US HT weteran, paliwo +40), 40,20 (RU Half-Tracked spalony, zasadza Legion 3 ludzi), 55,24 (US HT rozbity, +30), 70,20 (RU, +30), 85,24 (ostatni, +30) — Inżynier Maya przeszukuje 5s przy wraku PZ02_04
+- 3 punkty zasadzki Legionu Czerwonego Sztandaru: 35,20 / 60,28 / 80,20 — na Ś/T dodatkowy patrol
+- Meta B 90,24 wyjazd — wymaga paliwa >15% by nie stanać
+Edytor: canyon wąski korytarz 12 kafli szerokości, wraki jako b_depot zrujnowane, mgła pyłowa. Skalowanie: Ł 2 wraki wystarczą i 3 patrole, Ś 3 wraki i 5 patroli, T 4 wraki i 7 patroli spalanie x2. SAIL 02_misja.sail + voices PZ02_01 Elena, PZ02_02 Viktor.
+Decyzja: Wiktor buff -20% paliwo od 06 — tu paliwo jest testem przed buffem.

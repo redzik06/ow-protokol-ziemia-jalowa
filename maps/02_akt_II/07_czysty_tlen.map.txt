@@ -1,0 +1,10 @@
+MAP 07 — Czysty Tlen — FABUŁA 96x96 snow_valley — Przepompownia wody
+Fabuła: Dolina Szarej Pustyni — jedyna czysta woda pod zmarzliną (inni piją skażoną). Legion Alyi chce ją przejąć — gracz broni przepompowni. Generator zasila 3 wieżyczki b_turret. Wiktor (jeśli masz) pomaga naprawiać, Farid pomaga filtrować. Woda = życie, wybór moralny fabuły.
+Strefy fabularne:
+- Start południe 48,80 drużyna 5+branch (Wiktor/Farid) + HT ×2
+- Przepompownia b_factory 48,48 centralna — cel obrony, HP 700 Ł /500 Ś /300 T
+- 3 wieżyczki hackowalne przez Yuri (naukowiec 10s): NW 30,30 SE 66,30 S 48,66 — po hack strzelają automatycznie na Legion
+- Generator b_power 48,60 — jeśli padł, wieżyczki offline PZ07_03, 30s naprawa przez Viktora/Maayę
+- Fale Legionu 3 kierunki: pn 48,10 wsch 80,48 zach 16,48 co 90s (Ł 4 / Ś 6 / T 8)
+Edytor: snow_valley dolina, rzeka zamarznięta pod śniegiem, wieżyczki b_turret. Timer 10 min obrony. PZ07_01 Yuri, PZ07_04 Lina echo. SAIL 07_misja.sail.
+Po wygranej: dostajesz crate wody +5 filtrów (łuży)

@@ -1,0 +1,9 @@
+MAP 11 — Zamarznięta Pamięć — FABUŁA 64x64 indoor_bunker — Archiwum EON-2
+Fabuła: EON-2 pod lodem 6 miesięcy niewidoczny — teraz sublimacja 09 odsłoniła właz. Indoor 2 kafle szerokości, ciemność, tylko latarki 10/8/6 krat per poziom. Echo-baz (AI żeński syntetyczny) wita glitchem PZ11_05. Elena+Yuri czele — odkrywają log Mirona Karpova z 3 kodami do 13 (Sokolov/Chen/Reyes) + błąd 47 km skoku. Tu rozumiesz Protokół Ziemia Jałowa.
+Strefy fabularne:
+- Start śluza 10,10 HT zostaje na zewnątrz (tylko piechota 5+branch wchodzi) — wąskie korytarze 2 kafle, drzwi co 10 krat
+- Labirynt korytarzy 30,30 + 50,30 + 30,50 + 50,50 — każdy pokój to archiwum b_lab z lore: 30,30 log Alpha, 50,30 log Legion, 50,50 rdzeń EON-2 b_siberite_power 50,50 HP 500
+- Ciemność: latarka 10 krat Ł /8 Ś /6 T, bateria 60s potem doładuj przy generatorze b_power 40,40 PZ11_06
+- Echo-baz 50,50 — dialog PZ11_01/02/03, po 60s hack Yuri 20s → kody do 13 (Sokolov Alfa) + master EON-2
+Edytor: indoor_bunker tileset, CreateLight per człowiek, SetVisibility 6-10 krat. Wrogowie: zombi RU z 2004 (stasis) 6/8/10 patrole ciche. Mechanika 11_misja.sail. Voices Elena neutral, Yuri rosyjski akcent, Echo-baz syntetyczny.
+Przejście: bez walki głośnej — stealth, latarki. Wiedza = klucze do 13/14.

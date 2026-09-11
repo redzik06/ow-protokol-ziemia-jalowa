@@ -1,0 +1,10 @@
+MAP 06 — Wolne Targowisko — FABUŁA 64x64 ruins_town — Enklawa Nowa Nadzieja HUB
+Fabuła: Enklawa Nowa Nadzieja — jedyny rozejm w Szarej Pustyni. Rook Nowak Szczur (44, handlarz) rządzi handlem crates mat_cans. Spotykasz Wiktora Volkova (38, mechanik, rosyjski akcent) — ojciec-przyjaciel Eleny, chce wrócić do Sojuszu, vs Farida Al-Hadi (32, naukowiec-medyk, arabski akcent) — uczeń Alyi, zna filtry. Wybór branch rekrut_06 decyduje o Sojuszu/Legionie do 15. Handel decyduje o zasobach 07-08.
+Strefy fabularne:
+- Rynek centralny 32,32 — Rook b_depot handel: 10 mat_cans Ł /20 Ś /35 T za filtr, ceny x1/x1.5/x2. Dialog PZ06_01/PZ06_05 rozejm: Tu się nie strzela
+- Namiot Sojuszu 15,15 — Wiktor Volkov dialog PZ06_03: Zostałem bo Elena potrzebuje młotka — buff -20% paliwa +10 pancerz HT, Elena wraca
+- Namiot Legionu 48,48 — Farid PZ06_04: Leczę tych których postrzelicie — medyk, filtry +2, Alya neutral do 12 jeśli Farid wybrany
+- Namiot Apemen 32,15 — Ur (jeśli oswojony w 04) handluje kością za ammo
+- Wyjścia: timer 60s Ł /30s Ś /20s T na decyzję — po czasie Legion atakuje i tracisz obu
+Edytor: ruins_town namioty b_shelter, brak walki w środku (strefa safe), dźwięk bazaru. Mechanika branch SetGlobalVar rekrut_06=1/2. Po wyborze PZ06_06/PZ06_07. SAIL 06_misja.sail voices Wiktor rosyjski akcent / Farid arabski.
+Konsekwencja: Wiktor→HT lepszy w 08 (progress +1), Farid→filtr lepszy w 15 (Alya zdrada sceną PZ15_03).

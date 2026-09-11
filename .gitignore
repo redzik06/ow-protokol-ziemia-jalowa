@@ -1,0 +1,8 @@
+# OW mod test — ignore local backups and OS junk
+missions/backup_txt_dup/
+*.bak
+*.tmp
+*.log
+Thumbs.db
+Desktop.ini
+.DS_Store

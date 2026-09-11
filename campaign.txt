@@ -1,0 +1,123 @@
+; campaign.txt — Protokół Ziemia Jałowa
+; Nowa historia, nie kontynuacja ORI — 15 map indywidualnych, każda osobna
+; Vault: OW-Protokol-Ziemia-Jalowa/00 - Przegląd Kampanii.md + 00 - Mapy Przegląd.md + 05 Fabuła/
+; SAIL: sailbase.php — prototypy uc_/hc_/vc_, misje 01-15
+
+[Campaign]
+Name=Protokół Ziemia Jałowa
+Author=ow mod test
+Version=0.1
+Description=Nowa historia 2004, 3 ekspedycje, Szara Pustynia, Protokół 3 rakiet. Postapo od 01, czarny humor. 15 map indywidualnych.
+Persistent=1
+Difficulty=commander
+
+; Akt I: Rozpad i Ucieczka (01-05)
+[Mission: 01]
+Name=Ostatnia Iskra
+Map=maps/01_akt_I/01_ostatnia_iskra.map
+SAIL=missions/01_misja.sail
+Briefing=Ruiny Alpha przy żyle Syberytu. Legion atakuje. Elena zbiera drużynę 5.
+Persistent=Elena_Varga,Yuri_Kamarov,Viktor_Drachev,Maya_Torres,Karim_AlRashid
+Objectives=Ucieczka HT, dziennik bazy
+
+[Mission: 02]
+Name=Droga przez Rdzę
+Map=maps/01_akt_I/02_droga_przez_rdze.map
+SAIL=missions/02_misja.sail
+Briefing=Kanion Wiatru — jedyna droga na północ. Paliwo custom mat_oil z wraków bitwy 2 mies. temu.
+Persistent=Elena_Varga,Yuri_Kamarov,Viktor_Drachev,Maya_Torres,Karim_AlRashid
+
+[Mission: 03]
+Name=Pierwsza Pomoc
+Map=maps/01_akt_I/03_pierwsza_pomoc.map
+SAIL=missions/03_misja.sail
+Briefing=Posterunek Sojuszu, choroba pyłowa IsInBuilding, Lina Needle. Rozkaz Mirona dla Viktora.
+Persistent=Elena_Varga,Yuri_Kamarov,Viktor_Drachev,Maya_Torres,Karim_AlRashid
+
+[Mission: 04]
+Name=Cmentarzysko Czołgów
+Map=maps/01_akt_I/04_cmentarzysko_czolgow.map
+SAIL=missions/04_misja.sail
+Briefing=Wraki US Heavy Tracked, noc, demontaż 15s, hałas → Małpoludy (Apemen). Oswojenie Ura.
+Persistent=Elena_Varga,Yuri_Kamarov,Viktor_Drachev,Maya_Torres,Karim_AlRashid
+
+[Mission: 05]
+Name=Brama na Północ
+Map=maps/01_akt_I/05_brama_na_polnoc.map
+SAIL=missions/05_misja.sail
+Briefing=Barykada RU Kirowa, craft ładunków Maya, obrona 2 min, Viktor vs kolega. Maja może zginąć.
+Persistent=Elena_Varga,Yuri_Kamarov,Viktor_Drachev,Maya_Torres,Karim_AlRashid
+
+; Akt II: Szara Pustynia (06-10)
+[Mission: 06]
+Name=Wolne Targowisko
+Map=maps/02_akt_II/06_wolne_targowisko.map
+SAIL=missions/06_misja.sail
+Briefing=Enklawa Nowa Nadzieja, hub handlu mat_cans. Wybór Wiktor (Sojusz) vs Farid (Legion). Rozejm Rooka.
+Persistent=Elena_Varga,Yuri_Kamarov,Viktor_Drachev,Maya_Torres,Karim_AlRashid
+; Branch 06: Wiktor_Volkov (Sojusz) vs Farid_AlHadi (Legion) via SetGlobalVar rekrut_06 — SAIL only
+
+[Mission: 07]
+Name=Czysty Tlen
+Map=maps/02_akt_II/07_czysty_tlen.map
+SAIL=missions/07_misja.sail
+Briefing=Przepompownia pod zmarzliną — jedyna czysta woda. Obrona z wieżyczkami, generator.
+Persistent=Elena_Varga,Yuri_Kamarov,Viktor_Drachev,Maya_Torres,Karim_AlRashid
+
+[Mission: 08]
+Name=Wzmocnienie Konwoju
+Map=maps/02_akt_II/08_wzmocnienie_konwoju.map
+SAIL=missions/08_misja.sail
+Briefing=Garaż ZSRR porzucony (brak mat_oil), craft 2. pojazdu HT/Half-Tracked. Wiktor buff.
+Persistent=Elena_Varga,Yuri_Kamarov,Viktor_Drachev,Maya_Torres,Karim_AlRashid
+
+[Mission: 09]
+Name=Anomalia Łza
+Map=maps/02_akt_II/09_anomalia_lza.map
+SAIL=missions/09_misja.sail
+Briefing=Strefa Syberytu, 3 stałe anomalie (Źródło/Cofka/Zwarcie), sublimacja odsłania EON-2. Kłótnia Yuri-Karim.
+Persistent=Elena_Varga,Yuri_Kamarov,Viktor_Drachev,Maya_Torres,Karim_AlRashid
+
+[Mission: 10]
+Name=Przechwycenie Sygnału
+Map=maps/02_akt_II/10_przechwycenie_sygnalu.map
+SAIL=missions/10_misja.sail
+Briefing=Wieża b_control_tower na płaskowyżu, 3 kierunki fal, miny, wabienie w anomalie.
+Persistent=Elena_Varga,Yuri_Kamarov,Viktor_Drachev,Maya_Torres,Karim_AlRashid
+
+; Akt III: Protokół Eos (11-15)
+[Mission: 11]
+Name=Zamarznięta Pamięć
+Map=maps/03_akt_III/11_zamarznieta_pamiec.map
+SAIL=missions/11_misja.sail
+Briefing=EON-2 pod lodem 6 mies., korytarze 2 kafle indoor, latarki, Echo-baz. Elena+Yuri.
+Persistent=Elena_Varga,Yuri_Kamarov,Viktor_Drachev,Maya_Torres,Karim_AlRashid
+
+[Mission: 12]
+Name=Czerwony Zmierzch
+Map=maps/03_akt_III/12_czerwony_zmierzch.map
+SAIL=missions/12_misja.sail
+Briefing=Rzeka lodowa 128x48, poślizg, pojedynek Legionu. Kulminacja Viktor vs Karim — jeden ginie per wybór.
+Persistent=Elena_Varga,Yuri_Kamarov,Viktor_Drachev,Maya_Torres,Karim_AlRashid
+
+[Mission: 13]
+Name=Baza Eos — Przedpola
+Map=maps/03_akt_III/13_baza_eos_przedpola.map
+SAIL=missions/13_misja.sail
+Briefing=Pierścień Eos, 4 terminale hack (3 kody Mirona + master), 8 autosektur. Sokolov Alfa.
+Persistent=Elena_Varga,Yuri_Kamarov,Viktor_Drachev,Maya_Torres,Karim_AlRashid
+
+[Mission: 14]
+Name=Bitwa w Kraterze
+Map=maps/03_akt_III/14_bitwa_w_kraterze.map
+SAIL=missions/14_misja.sail
+Briefing=Krater Szochowa 128x128, 3 silosy NW/NE/S z rakietami, kody Chen/Reyes, Behemoth. Yuri → Miron.
+Persistent=Elena_Varga,Yuri_Kamarov,Viktor_Drachev,Maya_Torres,Karim_AlRashid
+
+[Mission: 15]
+Name=Ostatni Świt
+Map=maps/03_akt_III/15_ostatni_swit.map
+SAIL=missions/15_misja.sail
+Briefing=Serwerownia EON-2, filtr b_siberite_power 60s hack, finał Elena → Alya (lub Farid → Alya). 3 zakończenia via CountProfession.
+Persistent=Elena_Varga,Yuri_Kamarov,Viktor_Drachev,Maya_Torres,Karim_AlRashid
+Endings=A_Sojusz (Yuri+Maya), B_Legion (Elena+Viktor), C_Jalowa (większość martwa)
