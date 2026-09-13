@@ -11,3 +11,11 @@ Edytor: ice_river, SetFriction 0.2 via SAIL Every 0$5, rzeka 12 kafli, brzegi bl
 STREFY SAIL (obowiązkowe w Edytorze, nazwy 1:1):
 - area_lod (rzeka 18-30)
 - area_wybor (60,24 wąwóz)
+
+BUDOWA KROK PO KROKU (ow_editorOGL_SGUI.exe):
+1. Nowa mapa 128x48 ice_river, tileset jak w opisie. Rzeka lodowa (kafle lodu spowalniaja, map-side).
+2. Teren i dekoracje: Start zachod 10,24 (2 HT + Mastodon). Dowodca Legionu wschod 115,24 (600/800/1000 HP). Strefy: area_lod (rzeka), area_wybor (60,24). Patrole 4/6/8.
+3. Strefy area_* z listy STREFY SAIL (nazwy 1:1).
+4. Jednostek NIE stawiaj (poza decor) — stawia je SAIL. 5. Podlacz SAIL + Texts (PZxx).
+6. Zapisz .map obok SAIL (test: Mods/Protokol). 7. F9 + test L/S/T.
+SAIL 12: lod peka na T (-1 HP/s HT), wybor BuildQuery Szturm/Negocjacje (Viktor vs Karim), timer 60/30s, strata 2 pojazdow = fail.

@@ -10,3 +10,11 @@ Po misji: masz koordynaty EON-2 (odblokowuje 11 indoor).
 
 STREFY SAIL (obowiązkowe w Edytorze, nazwy 1:1):
 - area_wieza (48,48)
+
+BUDOWA KROK PO KROKU (ow_editorOGL_SGUI.exe):
+1. Nowa mapa 96x96 plateau, tileset jak w opisie. Wieza b_control_tower 48,48 (1000/800/500 HP).
+2. Teren i dekoracje: Start 48,80. Strefa area_wieza. Wejscia N/E/W. Miny auto na sciezkach 12/10/6.
+3. Strefy area_* z listy STREFY SAIL (nazwy 1:1).
+4. Jednostek NIE stawiaj (poza decor) — stawia je SAIL. 5. Podlacz SAIL + Texts (PZxx).
+6. Zapisz .map obok SAIL (test: Mods/Protokol). 7. F9 + test L/S/T.
+SAIL 10: naprawa Maya 30s, sygnal Yuri 15s (postep w strefie), obrona 600/600/480s, fale 4/6/8 z 3 kierunkow.

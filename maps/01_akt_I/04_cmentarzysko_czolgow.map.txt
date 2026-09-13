@@ -12,3 +12,11 @@ STREFY SAIL (obowiązkowe w Edytorze, nazwy 1:1):
 - area_wrak2 (70,30)
 - area_wrak3 (30,70)
 - area_wrak4 (70,70, krater Ura)
+
+BUDOWA KROK PO KROKU (ow_editorOGL_SGUI.exe):
+1. Nowa mapa 100x100 battlefield noc, tileset jak w opisie. Pole bitwy, 4 wraki HT.
+2. Teren i dekoracje: Start 50,85. Wraki: 30,30 / 70,30 / 30,70 / 70,70 (area_wrak1..4). Krater Ura 70,70. Patrole Apemen 3/4/5.
+3. Strefy area_* z listy STREFY SAIL (nazwy 1:1).
+4. Jednostek NIE stawiaj (poza decor) — stawia je SAIL. 5. Podlacz SAIL + Texts (PZxx).
+6. Zapisz .map obok SAIL (test: Mods/Protokol). 7. F9 + test L/S/T.
+SAIL 04: demontaz Maya 10/15/20s (auto w strefie), strzal = wataha 2/3/4 (Attacks, cd 30s), Ur przez ComTameXY (event ApemanTamed).

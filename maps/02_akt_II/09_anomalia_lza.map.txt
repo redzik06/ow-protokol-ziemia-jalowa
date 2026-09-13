@@ -16,3 +16,11 @@ STREFY SAIL (obowiązkowe w Edytorze, nazwy 1:1):
 - area_anomalia_zwarcie_1
 - area_anomalia_zwarcie_2
 - area_meta (90,20 wrak EON-2)
+
+BUDOWA KROK PO KROKU (ow_editorOGL_SGUI.exe):
+1. Nowa mapa 112x112 wasteland_anomaly, tileset jak w opisie. 6 anomalii stalych (pary).
+2. Teren i dekoracje: Start 56,100, meta 90,20 (wrak EON-2). Strefy: zrodlo_1/2, cofka_1/2, zwarcie_1/2. HTx2 na start.
+3. Strefy area_* z listy STREFY SAIL (nazwy 1:1).
+4. Jednostek NIE stawiaj (poza decor) — stawia je SAIL. 5. Podlacz SAIL + Texts (PZxx).
+6. Zapisz .map obok SAIL (test: Mods/Protokol). 7. F9 + test L/S/T.
+SAIL 09: Zrodlo +30 HP, Cofka ComMoveXY -5/-8, Zwarcie stop 7/10/15s, cooldown 6/10/14 tickow.

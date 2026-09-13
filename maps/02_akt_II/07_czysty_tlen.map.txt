@@ -13,3 +13,11 @@ STREFY SAIL (obowiązkowe w Edytorze, nazwy 1:1):
 - area_tur1 (30,30)
 - area_tur2 (66,30)
 - area_tur3 (48,66)
+
+BUDOWA KROK PO KROKU (ow_editorOGL_SGUI.exe):
+1. Nowa mapa 96x96 snow_valley, tileset jak w opisie. Przepompownia + generator.
+2. Teren i dekoracje: Generator b_depot 48,48 (700/500/300 HP). Wiezyczki b_turret 30,30 / 66,30 / 48,66 (area_tur1..3, strona 2). Fale z pn.
+3. Strefy area_* z listy STREFY SAIL (nazwy 1:1).
+4. Jednostek NIE stawiaj (poza decor) — stawia je SAIL. 5. Podlacz SAIL + Texts (PZxx).
+6. Zapisz .map obok SAIL (test: Mods/Protokol). 7. F9 + test L/S/T.
+SAIL 07: Maya naprawia w srodku (+5/s, eventy), hack wiezyczek 8/10/15s, obrona 600/480/360s, fale 4/6/8, Wiktor buff.

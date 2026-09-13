@@ -15,3 +15,11 @@ STREFY SAIL (obowiązkowe w Edytorze, nazwy 1:1):
 - area_warsztat (craft 32,70)
 - areaBarykada (32,20)
 - area_escape_polnoc (32,5)
+
+BUDOWA KROK PO KROKU (ow_editorOGL_SGUI.exe):
+1. Nowa mapa 64x96 mountain, tileset jak w opisie. Przelecz + barykada RU 32,20.
+2. Teren i dekoracje: Start 32,85. Zloza area_mat1..3, warsztat area_warsztat (32,70), barykada areaBarykada (32,20), ucieczka area_escape_polnoc (32,5).
+3. Strefy area_* z listy STREFY SAIL (nazwy 1:1).
+4. Jednostek NIE stawiaj (poza decor) — stawia je SAIL. 5. Podlacz SAIL + Texts (PZxx).
+6. Zapisz .map obok SAIL (test: Mods/Protokol). 7. F9 + test L/S/T.
+SAIL 05: Maya zbiera 3x mat, craft 3 ladunki w warsztacie, ladunek czasowy AddComPlaceDelayedCharge 32,20, poscig 4/6/8. Maya martwa = 14 bez inzyniera.

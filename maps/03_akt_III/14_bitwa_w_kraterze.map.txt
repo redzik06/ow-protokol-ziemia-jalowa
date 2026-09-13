@@ -12,3 +12,11 @@ STREFY SAIL (obowiązkowe w Edytorze, nazwy 1:1):
 - area_silos_1 (NW 20,20)
 - area_silos_2 (NE 100,20)
 - area_silos_3 (S 64,90)
+
+BUDOWA KROK PO KROKU (ow_editorOGL_SGUI.exe):
+1. Nowa mapa 128x128 crater, tileset jak w opisie. 3 silosy-bunkry (strona 2): NW 20,20 / NE 100,20 / S 64,90 + area_silos_1..3.
+2. Teren i dekoracje: Start 64,100. Miron przy S, Chen przy NE. Behemoth S/T (800/1200 HP). Fale 4/6/8.
+3. Strefy area_* z listy STREFY SAIL (nazwy 1:1).
+4. Jednostek NIE stawiaj (poza decor) — stawia je SAIL. 5. Podlacz SAIL + Texts (PZxx).
+6. Zapisz .map obok SAIL (test: Mods/Protokol). 7. F9 + test L/S/T.
+SAIL 14: rozbrajanie Maya 10/15/20s (30 bez Mayi na T), Miron eventu Yuri KillUnit, Chen dezercja (Farid/Yuri), win = 3 silosy.

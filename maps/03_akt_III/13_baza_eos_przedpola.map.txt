@@ -13,3 +13,11 @@ STREFY SAIL (obowiązkowe w Edytorze, nazwy 1:1):
 - area_term2 (90,20)
 - area_term3 (20,90)
 - area_term4 (90,90)
+
+BUDOWA KROK PO KROKU (ow_editorOGL_SGUI.exe):
+1. Nowa mapa 112x112 bunker_exterior, tileset jak w opisie. Pierscien 8 autosektur b_turret (strona 2).
+2. Teren i dekoracje: Start 56,100. Terminale b_lab (strona 2): 20,20 / 90,20 / 20,90 / 90,90 + area_term1..4. HTx2.
+3. Strefy area_* z listy STREFY SAIL (nazwy 1:1).
+4. Jednostek NIE stawiaj (poza decor) — stawia je SAIL. 5. Podlacz SAIL + Texts (PZxx).
+6. Zapisz .map obok SAIL (test: Mods/Protokol). 7. F9 + test L/S/T.
+SAIL 13: hack Maya 15/20/30s (postep w strefie), efekty 1=2 / 2=4 / 4=8 off, win = 4 terminale.

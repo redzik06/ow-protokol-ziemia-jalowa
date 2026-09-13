@@ -11,3 +11,11 @@ Konsekwencja: Wiktor→HT lepszy w 08 (progress +1), Farid→filtr lepszy w 15 (
 
 STREFY SAIL (obowiązkowe w Edytorze, nazwy 1:1):
 - area_rynek (32,32)
+
+BUDOWA KROK PO KROKU (ow_editorOGL_SGUI.exe):
+1. Nowa mapa 64x64 ruins_town, tileset jak w opisie. Hub bez walki, rozejm.
+2. Teren i dekoracje: Rynek area_rynek (32,32). Namioty: Sojusz (Wiktor), Legion (Farid), Rook. Strefa safe.
+3. Strefy area_* z listy STREFY SAIL (nazwy 1:1).
+4. Jednostek NIE stawiaj (poza decor) — stawia je SAIL. 5. Podlacz SAIL + Texts (PZxx).
+6. Zapisz .map obok SAIL (test: Mods/Protokol). 7. F9 + test L/S/T.
+SAIL 06: branch TestVariable (rekrut_wiktor/farid), timer wyboru 60/30s (licznik), handel 10/20/35.

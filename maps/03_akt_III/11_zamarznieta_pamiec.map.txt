@@ -10,3 +10,11 @@ Przejście: bez walki głośnej — stealth, latarki. Wiedza = klucze do 13/14.
 
 STREFY SAIL (obowiązkowe w Edytorze, nazwy 1:1):
 - area_rdzen (50,50)
+
+BUDOWA KROK PO KROKU (ow_editorOGL_SGUI.exe):
+1. Nowa mapa 64x64 indoor_bunker, tileset jak w opisie. Korytarze 2 kafle, ciemno (map-side).
+2. Teren i dekoracje: Start 32,60 pieszo (bez HT). Rdzen area_rdzen (50,50). Wrogowie stasis: 6/10/14.
+3. Strefy area_* z listy STREFY SAIL (nazwy 1:1).
+4. Jednostek NIE stawiaj (poza decor) — stawia je SAIL. 5. Podlacz SAIL + Texts (PZxx).
+6. Zapisz .map obok SAIL (test: Mods/Protokol). 7. F9 + test L/S/T.
+SAIL 11: alarm na T (strzal = 2 wrogow, cd 60s), win = Elena/Yuri w area_rdzen. Drzwi: otwarte korytarze.

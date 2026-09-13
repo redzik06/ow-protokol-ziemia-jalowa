@@ -13,3 +13,11 @@ STREFY SAIL (obowiązkowe w Edytorze, nazwy 1:1):
 - area_czesc3 (10,50)
 - area_czesc4 (70,50)
 - area_warsztat (40,32)
+
+BUDOWA KROK PO KROKU (ow_editorOGL_SGUI.exe):
+1. Nowa mapa 80x64 industrial, tileset jak w opisie. Garaz ZSRR + warsztat b_factory 40,32.
+2. Teren i dekoracje: Czesci area_czesc1..4: 10,20 / 70,20 / 10,50 / 70,50. Warsztat area_warsztat. Fale z pn.
+3. Strefy area_* z listy STREFY SAIL (nazwy 1:1).
+4. Jednostek NIE stawiaj (poza decor) — stawia je SAIL. 5. Podlacz SAIL + Texts (PZxx).
+6. Zapisz .map obok SAIL (test: Mods/Protokol). 7. F9 + test L/S/T.
+SAIL 08: czesci 4 (wejscie = czesc), prog 100/100/140 (+2/+1, Wiktor +1), 2. pojazd HT, obrona 60s, fale 4/6/8.
