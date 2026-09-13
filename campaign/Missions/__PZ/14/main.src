@@ -73,7 +73,7 @@ begin
     if difficulty <> 0 then
     begin
         uc_side := 2; uc_nation := nation_russian; vc_chassis := ru_heavy_tracked; // Behemoth jako heavy
-        vc_engine := engine_combustion; vc_control := control_manual; vc_weapon := us_heavy_gun;
+        vc_engine := engine_combustion; vc_control := control_manual; vc_weapon := ru_heavy_gun;
         uc_x := 64; uc_y := 64;
         un_behemoth := CreateVehicle;
         if difficulty = 1 then SetLives([un_behemoth], 800)

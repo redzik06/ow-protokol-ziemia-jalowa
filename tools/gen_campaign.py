@@ -172,10 +172,9 @@ def main():
             lines += [f"$ {sp}", f"- {tx}", ""]
         for rel in [f"Campaigns/PZ/Txt{nn}.wri", f"Campaigns/PZ/#pol/Txt{nn}.wri"]:
             w_utf16(OUT / rel, "\n".join(lines))
-    g = ["// Protokół Ziemia Jałowa - teksty globalne", ""]
-    for num in range(1, 16):
-        g += [f"$ OBJ_{num:02d}", f"- {OBJ[num]}", ""]
-    w_utf16(OUT / "Texts" / "LangPOL.wri", "\n".join(g))
+    # UWAGA: Texts/LangPOL.wri NIE generujemy — Lang przyjmuje tylko numeryczne
+    # ID silnika (1018=Mody...). Nasze $ OBJ_ żyją w texts.txt misji. Gdyby gra
+    # potrzebowała globalnych, dopisać tu w formacie numerycznym.
     n = sum(1 for _ in OUT.rglob("*") if _.is_file())
     print(f"campaign package: {n} files in {OUT}")
 

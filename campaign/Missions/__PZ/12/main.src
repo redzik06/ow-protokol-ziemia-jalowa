@@ -62,7 +62,7 @@ begin
     un_mastodon := CreateVehicle; // Bura
 
     // Dowódca Legionu — na wschodzie rzeki
-    uc_side := 2; uc_nation := nation_arabian; vc_chassis := ar_half_tracked; vc_engine := engine_combustion; vc_control := control_manual; vc_weapon := us_heavy_gun;
+    uc_side := 2; uc_nation := nation_arabian; vc_chassis := ar_half_tracked; vc_engine := engine_combustion; vc_control := control_manual; vc_weapon := ar_gun;
     uc_x := 115; uc_y := 24;
     un_dowodcaLegionu := CreateVehicle;
     if difficulty = 0 then SetLives([un_dowodcaLegionu], 600)

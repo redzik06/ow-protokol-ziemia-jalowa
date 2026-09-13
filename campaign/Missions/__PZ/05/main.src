@@ -122,7 +122,7 @@ begin
     // Trudny: dodatkowo Behemoth cieñ
     if difficulty = 2 then
     begin
-        uc_side := 2; vc_chassis := ru_heavy_tracked; vc_engine := engine_combustion; vc_weapon := us_heavy_gun;
+        uc_side := 2; vc_chassis := ru_heavy_tracked; vc_engine := engine_combustion; vc_control := control_manual; vc_weapon := ru_heavy_gun;
         uc_x := 32; uc_y := 65; CreateVehicle;
     end;
 end;
