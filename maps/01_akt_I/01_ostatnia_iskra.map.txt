@@ -12,3 +12,19 @@ Spójność: persistent 5 ocalonych → 02. Jeśli ktoś zginie tu, brak go dale
 STREFY SAIL (obowiązkowe w Edytorze, nazwy 1:1):
 - area_ewakuacja (brama pn 36,5)
 - area_dziennik (barak z dziennikiem)
+
+BUDOWA KROK PO KROKU (ow_editorOGL_SGUI.exe, ~30 min):
+1. Edytor → Nowa mapa → 72x72 → tileset ruins (+dust/weather pył 30%).
+2. Teren: koszary SW (start 10,10), plac centrum (HT 36,36, przejezdny!),
+   brama pn (36,5, przejście), barak z dziennikiem (~50,50), gruzy 40%.
+3. Dekoracje (NIE jednostki — te stawia SAIL!): barak (visual) na 50,50,
+   żyła Syberytu (40,40, visual), wraki Alpha przy 36,36.
+4. Strefy (dokładnie te nazwy): area_ewakuacja @36,5 (ok. 6x6),
+   area_dziennik @50,50 (barak, ok. 6x6).
+5. Misja → właściwości: SAIL = missions/01_misja.sail; Texts z PZ01_01/02 + HINTy.
+6. Zapisz jako 01_ostatnia_iskra.map (obok SAIL; docelowo struktura moda + ModLauncher).
+7. F9 kompilacja → popraw błędy (patrz flagi w SAIL); test Ł/Ś/T:
+   Ł: HT 80 HP, 20 min, 2 patrole; Ś: 70 HP, 15 min, 3 patrole;
+   T: 50 HP, 10 min, 4 patrole; wataha 2/3/4; dziennik = sekret.
+PYTANIA DO WERYFIKACJI W EDYTORZE: dokładna nazwa tilesetu ruins;
+gdzie gra ładuje mapy kampanii moda (CommunityMaps vs folder moda).
