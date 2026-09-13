@@ -5,46 +5,50 @@
 ; SAIL: original-war.net/sailbase.php — difficulty 0/1/2, fuel custom, IsInArea, FilterUnitsInArea
 
 // === GLOBALE ===
-int fuel = 100;
-int fuel_max = 100;
-int fuel_consumption = 1;
+// Paliwo silnikiem gry: SetFuel/GetFuel (vc_fuel_battery). Poziomy: start 100/90/70.
+int wrak_full[5]; // 1=wrak ma ropę (area_wrak1..5 na mapie)
+int siphon_cd = 0; // cooldown spuszczania
 
-export un_humans[5];
+export un_humans[6];
 export un_transporterHT;
-export area_wrak[5];
-export area_meta;
 
 // === STARTING ===
+int goal_state[3]; // 0=off 1=aktywny 2=done 3=fail
+
 Starting
 begin
-    RegisterGoal(0, 'DOTRZYJ_KANION'); // dotrzyj HT do meta północ
-    RegisterGoal(1, 'UTRZYMAJ_PALIWO');
-    EnableGoal(0, true);
-    EnableGoal(1, true);
+    // cel 0: DOTRZYJ_KANION // dotrzyj HT do meta północ
+    // cel 1: UTRZYMAJ_PALIWO
+    goal_state[0] := 1;
+    goal_state[1] := 1;
 
     // Drużyna 5 persistent z 01 — recall (campaign.txt persistent=1)
     // W SAIL: GiveMissionExperience via campaign, tu CreateHuman placeholder jeśli brak importu
     // Dla prototypu tworzymy na nowo; w pełnej kampanii będą ImportCharacters
     uc_side := 1; uc_nation := nation_american; uc_x := 48; uc_y := 44; uc_direction := 0;
     hc_name := 'Elena Varga'; hc_class := class_mechanic; hc_sex := sex_female; hc_skills := [2,2,5,1];
+    hc_gallery := 1; hc_face_number := 1;
     un_humans[0] := CreateHuman;
     uc_x := 49; hc_name := 'Yuri Kamarov'; hc_class := class_scientistic; hc_skills := [1,1,2,5];
+    hc_gallery := 1; hc_face_number := 2;
     un_humans[1] := CreateHuman;
     uc_x := 50; hc_name := 'Viktor Drachev'; hc_class := class_soldier; hc_skills := [5,1,2,1];
+    hc_gallery := 1; hc_face_number := 3;
     un_humans[2] := CreateHuman;
     uc_x := 48; uc_y := 45; hc_name := 'Maya Torres'; hc_class := class_engineer; hc_skills := [2,5,3,2];
+    hc_gallery := 1; hc_face_number := 4;
     un_humans[3] := CreateHuman;
     uc_x := 49; uc_y := 45; hc_name := 'Karim Al-Rashid'; hc_class := class_desert_warior; hc_skills := [5,1,1,1];
+    hc_gallery := 1; hc_face_number := 5;
     un_humans[4] := CreateHuman;
 
-    // HT — paliwo skalowane trudnością (obligatoryjnie 3 poziomy)
-    vc_side := 1; vc_chassis := us_heavy_tracked; vc_engine := engine_combustion; vc_control := control_manual; vc_weapon := us_heavy_gun;
-    vc_x := 48; vc_y := 42;
+    // HT — paliwo skalowane trudnością (obligatoryjnie 3 poziomy, silnik spala sam)
+    uc_side := 1; vc_chassis := us_heavy_tracked; vc_engine := engine_combustion; vc_control := control_manual; vc_weapon := us_heavy_gun;
+    uc_x := 48; uc_y := 42;
     un_transporterHT := CreateVehicle;
-    if difficulty = 0 then fuel := 100 // łatwy — starcza na 100
-    else if difficulty = 1 then fuel := 100 // średni — bazowy
-    else fuel := 90; // trudny — mniej na start
-    if difficulty = 2 then fuel_consumption := 2 else fuel_consumption := 1; // trudny spala szybciej
+    if difficulty = 0 then SetFuel([un_transporterHT], 100) // łatwy — pełny bak
+    else if difficulty = 1 then SetFuel([un_transporterHT], 90) // średni — bazowy
+    else SetFuel([un_transporterHT], 70); // trudny — mniej na start + więcej patroli
 
     // Wraki 5 z mat_oil — rozlane z bitwy 2 mies. temu (poprawka sensu 02)
     // Pozycje: wrak 1 (10,20) blisko startu, 2 (30,25) strzeżony, 3 (50,25) centralny, 4 (70,20) strzeżony, 5 (80,40) sekret z Syberytem
@@ -85,63 +89,52 @@ begin
     ForceSay(un_humans[0], 'PZ02_01'); // Elena: "Kanion Wiatru — jedyna droga. I jedyny powód by tu wracać to ropa."
     Wait(1$0);
     ForceSay(un_humans[2], 'PZ02_02'); // Viktor: "To nie ropa. To krew bitwy. Ale pojadę i na tym."
-    if difficulty = 0 then AddHint('Łatwy: wystarczą 2 wraki, 3 patrole. Tankuj Inżynierem 5s przy wraku +30.')
-    else if difficulty = 1 then AddHint('Średni: 3 wraki, 5 patroli. 2 wraki strzeżone. Planuj trasę.')
-    else AddHint('Trudny: 4 wraki, 7 patroli, spalanie x2. Każdy postój to ryzyko.');
+    if difficulty = 0 then Hint('Łatwy: wystarczą 2 wraki, 3 patrole. Tankuj Mayą 5s przy wraku +30.')
+    else if difficulty = 1 then Hint('Średni: 3 wraki, 5 patroli. 2 wraki strzeżone. Planuj trasę.')
+    else Hint('Trudny: 4 wraki, 7 patroli, mniej paliwa na start. Każdy postój to ryzyko.');
+    wrak_full[0] := 1; wrak_full[1] := 1; wrak_full[2] := 1; wrak_full[3] := 1; wrak_full[4] := 1;
 
     CenterOnXY(GetX(un_transporterHT), GetY(un_transporterHT));
 end;
 
-// === EVERY — paliwo custom (99 Mechaniki SAIL/02) — skalowane ===
-Every 0$1 do
-begin
-    if IsOK(un_transporterHT) and IsMoving(un_transporterHT) then
-    begin
-        fuel := fuel - fuel_consumption;
-        if fuel < 0 then fuel := 0;
-        if fuel = 0 then
-        begin
-            ComStop([un_transporterHT]);
-            CenterOnXY(GetX(un_transporterHT), GetY(un_transporterHT));
-            AddMessage('HT: brak paliwa! Wyślij Inżyniera do wraku — mat_oil +30.');
-        end;
-        // HUD via AddMessage co 5s
-    end;
-end;
-
-Every 5$0 do
+// === EVERY — paliwo silnikiem gry (SetFuel start, HUD co 30s) ===
+Every 30$0 do
 begin
     if IsOK(un_transporterHT) then
-        AddMessage('PALIWO: ' + IntToStr(fuel) + '%');
+    begin
+        if GetFuel([un_transporterHT]) <= 0 then
+            Hint('HT: brak paliwa! Wyślij Mayę do wraku — mat_oil +30.')
+        else Hint('PALIWO: ' + GetFuel([un_transporterHT]) + '%');
+    end;
 end;
 
-// === WRAKI — tankowanie Inżynierem (tylko Maya/Inżynier) ===
-export function WrakSearch(human, wrakArea);
+// === WRAKI — spuszczanie ropy Mayą (area_wrak1..5 na mapie) ===
+export function WrakSearch(idx);
 begin
-    // Wywoływane gdy Inżynier w areale wraku i ma akcję Szukaj
-    if not IsOK(human) then Exit;
-    if GetProfession(human) <> class_engineer then
+    // Tylko Maya (un_humans[3], Inżynier) spuszcza mat_oil
+    if wrak_full[idx] = 0 then
     begin
-        AddMessage('Tylko Inżynier (Maya) potrafi spuścić mat_oil z wraku.');
+        Hint('Wrak pusty. Szukaj dalej.');
         Exit;
     end;
-    if not FilterUnitsInArea(wrakArea, GetSide(human)) then Exit; // nie w areale
-
     Wait(5$0);
-    fuel := fuel + 30;
-    if fuel > fuel_max then fuel := fuel_max;
-    AddMessage('Zatankowano +30. Paliwo: ' + IntToStr(fuel) + '%.');
-    // Usuń crate / oznacz wrak jako pusty
-    // RemoveCrate(wrakArea); // placeholder
-    // Efekt: CreateEffect(smoke)
+    if GetFuel([un_transporterHT]) + 30 > 100 then SetFuel([un_transporterHT], 100)
+    else SetFuel([un_transporterHT], GetFuel([un_transporterHT]) + 30);
+    wrak_full[idx] := 0;
+    Hint('Zatankowano +30. Paliwo: ' + GetFuel([un_transporterHT]) + '%.');
 end;
 
-// Wraki wywoływane via ComMove + IsInArea
-Every 0$5 do
+Every 1$0 do
 begin
-    // Sprawdź każdy z 5 wraków czy Maya/Elena w środku
-    // Uproszczone: jeśli którykolwiek human w areale wraku → WrakSearch
-    // Real: event HumanEnteredArea — tu co 0.5s
+    if siphon_cd > 0 then siphon_cd := siphon_cd - 1;
+    if siphon_cd = 0 and IsOK(un_humans[3]) and IsOK(un_transporterHT) then
+    begin
+        if IsInArea(un_humans[3], area_wrak1) then begin WrakSearch(0); siphon_cd := 8; end
+        else if IsInArea(un_humans[3], area_wrak2) then begin WrakSearch(1); siphon_cd := 8; end
+        else if IsInArea(un_humans[3], area_wrak3) then begin WrakSearch(2); siphon_cd := 8; end
+        else if IsInArea(un_humans[3], area_wrak4) then begin WrakSearch(3); siphon_cd := 8; end
+        else if IsInArea(un_humans[3], area_wrak5) then begin WrakSearch(4); siphon_cd := 8; end;
+    end;
 end;
 
 // === META — północ kanionu ===
@@ -149,11 +142,11 @@ Every 0$5 do
 begin
     if IsOK(un_transporterHT) and IsInArea(un_transporterHT, area_meta) then
     begin
-        if AreAllHumansInVehicleOrArea then
+        if AreAnyHumansAlive then
         begin
-            SetGoalState(0, goal_achieved);
-            SetGoalState(1, goal_achieved);
-            // Persistent + GiveMissionExperience — campaign recall
+            goal_state[0] := 2;
+            goal_state[1] := 2;
+            SaveCharacters([un_humans[0], un_humans[1], un_humans[2], un_humans[3], un_humans[4]], 'pz_team');
             YouWin;
         end;
     end;
@@ -162,12 +155,11 @@ end;
 // Fail
 Every 0$5 do
 begin
-    if (not IsOK(un_transporterHT)) or (fuel = 0 and not AnyWrakHasFuel) then
-    begin
-        // Jeśli HT zniszczony lub paliwo 0 i brak wraków z paliwem
-        // YouLose;
-    end;
-    if not AreAnyHumansAlive then YouLose;
+    if not IsOK(un_transporterHT) then YouLost('PZ02_HT');
+    if IsOK(un_transporterHT) and GetFuel([un_transporterHT]) <= 0
+        and wrak_full[0] = 0 and wrak_full[1] = 0 and wrak_full[2] = 0 and wrak_full[3] = 0 and wrak_full[4] = 0
+        and not IsInArea(un_transporterHT, area_meta) then YouLost('PZ02_FUEL');
+    if not AreAnyHumansAlive then YouLost('PZ02_FAIL');
 end;
 
 function AreAnyHumansAlive: Boolean;
@@ -175,18 +167,7 @@ begin
     Result := IsOK(un_humans[0]) or IsOK(un_humans[1]) or IsOK(un_humans[2]) or IsOK(un_humans[3]) or IsOK(un_humans[4]);
 end;
 
-function AreAllHumansInVehicleOrArea: Boolean;
-begin
-    Result := FilterUnitsInArea(area_meta, 1) >= 5 or GetVehicleOccupantsCount(un_transporterHT) >= 5;
-end;
-
-function AnyWrakHasFuel: Boolean;
-begin
-    Result := true; // placeholder — zawsze 1 wrak ma paliwo dopóki nie zebrane
-end;
-
 // Poprawka sensu (audyt 02): ropa to rozlane mat_oil z bitwy 2 mies. temu, nie magiczna
 // Postapo: Kanion suchy, wraki Medium Tracked porzucone, Legion patroluje
 // 3 poziomy trudności równocześnie — obligatoryjnie
 // Solucja lista: docs/solucje/02 - Solucja - Droga przez Rdzę.pdf (3 warianty Ł/Ś/T)
-

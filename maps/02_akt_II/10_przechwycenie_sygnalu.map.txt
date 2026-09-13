@@ -7,3 +7,6 @@ Strefy fabularne:
 - Fale Legion 3 kierunki co 60s: pn ciężkie HT, wsch piechota, zach Apemen (jeśli Ur nie oswojony → wrogo, jeśli oswojony → pomaga)
 Edytor: plateau wiatr, wieża centralna, widok na krater Eos w oddali (hint 11-13). Timer nadania 15s, potem obrona 8-12 min per poziom. Voices Maya/Viktor.
 Po misji: masz koordynaty EON-2 (odblokowuje 11 indoor).
+
+STREFY SAIL (obowiązkowe w Edytorze, nazwy 1:1):
+- area_wieza (48,48)

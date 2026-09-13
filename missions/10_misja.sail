@@ -6,101 +6,136 @@
 int wiezaHP = 800;
 int faleCount = 6;
 int miny = 10;
+int naprawa_left = 0; // postęp naprawy (30s Mayą w strefie wieży)
+int sygnal_left = 0; // postęp sygnału (15s Yurim w strefie wieży)
+int obrona_left = 0; // licznik obrony w sekundach
 
-export un_humans[5];
+export un_humans[6];
 export un_wieza;
+
+int goal_state[3]; // 0=off 1=aktywny 2=done 3=fail
 
 Starting
 begin
-    RegisterGoal(0, 'NAPRAW_WIEZE_30S');
-    RegisterGoal(1, 'NADAJ_SYGNAL_15S');
-    RegisterGoal(2, 'OBRONA_10MIN');
-    EnableGoal(0, true);
+    // cel 0: NAPRAW_WIEZE_30S
+    // cel 1: NADAJ_SYGNAL_15S
+    // cel 2: OBRONA_10MIN
+    goal_state[0] := 1;
 
     // Drużyna 5 + 2 pojazdy HT
     uc_side := 1; uc_nation := nation_american; uc_x := 48; uc_y := 80;
     hc_name := 'Elena Varga'; hc_class := class_mechanic; hc_skills := [2,2,5,1];
+    hc_gallery := 1; hc_face_number := 1;
     un_humans[0] := CreateHuman;
     uc_x := 49; hc_name := 'Yuri Kamarov'; hc_class := class_scientistic; hc_skills := [1,1,2,5];
+    hc_gallery := 1; hc_face_number := 2;
     un_humans[1] := CreateHuman;
     uc_x := 50; hc_name := 'Viktor Drachev'; hc_class := class_soldier; hc_skills := [5,1,2,1];
+    hc_gallery := 1; hc_face_number := 3;
     un_humans[2] := CreateHuman;
     uc_x := 48; uc_y := 81; hc_name := 'Maya Torres'; hc_class := class_engineer; hc_skills := [2,5,3,2];
+    hc_gallery := 1; hc_face_number := 4;
     un_humans[3] := CreateHuman;
     uc_x := 49; uc_y := 81; hc_name := 'Karim Al-Rashid'; hc_class := class_desert_warior; hc_skills := [5,1,1,1];
+    hc_gallery := 1; hc_face_number := 5;
     un_humans[4] := CreateHuman;
+    // Branch z 06 (TestVariable) — domyślnie Wiktor
+    if TestVariable('rekrut_farid') then
+    begin
+        uc_x := 50; uc_y := 81; hc_name := 'Farid Al-Hadi'; hc_class := class_scientistic;
+        hc_gallery := 1; hc_face_number := 7;
+        un_humans[5] := CreateHuman;
+    end
+    else
+    begin
+        uc_x := 50; uc_y := 81; hc_name := 'Wiktor Volkov'; hc_class := class_mechanic;
+        hc_gallery := 1; hc_face_number := 6;
+        un_humans[5] := CreateHuman;
+    end;
 
-    vc_side := 1; vc_chassis := us_heavy_tracked; vc_engine := engine_combustion; vc_control := control_manual; vc_weapon := us_heavy_gun;
-    vc_x := 45; vc_y := 82; CreateVehicle;
-    vc_x := 51; vc_y := 82; CreateVehicle;
+    uc_side := 1; vc_chassis := us_heavy_tracked; vc_engine := engine_combustion; vc_control := control_manual; vc_weapon := us_heavy_gun;
+    uc_x := 45; uc_y := 82; CreateVehicle;
+    uc_x := 51; uc_y := 82; CreateVehicle;
 
     // Wieża b_control_tower — HP skalowane trudnością
-    bc_side := 1; bc_type := b_control_tower; bc_x := 48; bc_y := 48;
+    uc_side := 1; bc_type := b_control_tower; uc_x := 48; uc_y := 48;
     un_wieza := CreateBuilding;
     if difficulty = 0 then wiezaHP := 1000
     else if difficulty = 1 then wiezaHP := 800
     else wiezaHP := 500;
-    SetHitPoints(un_wieza, wiezaHP);
+    SetLives([un_wieza], wiezaHP);
 
     // Miny i fale skalowane
     if difficulty = 0 then
     begin
-        miny := 12; faleCount := 4;
-        AddHint('Łatwy: 12 min, wieża 1000 HP, miny 12, fale 4 co 120s. Wrogowie wpadają w anomalie.');
+        miny := 12; faleCount := 4; obrona_left := 600;
+        Hint('Łatwy: 10 min, wieża 1000 HP, miny 12, fale 4 co 120s. Wrogowie wpadają w anomalie.');
     end
     else if difficulty = 1 then
     begin
-        miny := 10; faleCount := 6;
-        AddHint('Średni: 10 min, 800 HP, miny 10, fale 6 co 90s, N/W/E rotacja.');
+        miny := 10; faleCount := 6; obrona_left := 600;
+        Hint('Średni: 10 min, 800 HP, miny 10, fale 6 co 90s, N/W/E rotacja.');
     end
     else
     begin
-        miny := 6; faleCount := 8;
-        AddHint('Trudny: 8 min, 500 HP, miny 6, fale 8 co 60s. Wrogowie omijają anomalie. Brak czasu.');
+        miny := 6; faleCount := 8; obrona_left := 480;
+        Hint('Trudny: 8 min, 500 HP, miny 6, fale 8 co 60s. Wrogowie omijają anomalie. Brak czasu.');
     end;
 
-    // Miny do rozstawienia — crate
-    // CreateCrate(mine) x miny
+    // Miny na 3 ścieżkach (auto-rozstawienie, zdalne typ 0, strona 1)
+    for m := 1 to miny do
+    begin
+        if m mod 3 = 1 then PlaceMine(48 + m, 20, 1, 0) // północ
+        else if m mod 3 = 2 then PlaceMine(5, 48 + m, 1, 0) // zachód
+        else PlaceMine(90, 48 + m, 1, 0); // wschód
+    end;
 
     ForceSay(un_humans[3], 'PZ10_01'); // Maya naprawia
     ForceSay(un_humans[1], 'PZ10_02'); // Yuri nadaje
     CenterOnXY(48,48);
 end;
 
-// Naprawa wieży — Inżynier 30s
-export function NaprawWieze(human);
+// Naprawa wieży — Maya 30s w strefie wieży (auto, postęp)
+Every 1$0 do
 begin
-    if GetHumanClass(human) <> class_engineer then Exit;
-    AddMessage('Naprawa wieży 30s...');
-    Wait(30$0);
-    EnableGoal(0, false); EnableGoal(1, true);
-    AddMessage('Wieża naprawiona! Nadaj sygnał Naukowcem 15s.');
-end;
-
-// Nadanie sygnału — Naukowiec 15s
-export function NadajSygnal(human);
-begin
-    if GetHumanClass(human) <> class_scientistic then Exit;
-    AddMessage('Nadawanie sygnału 15s...');
-    Wait(15$0);
-    SetGoalState(1, goal_achieved);
-    EnableGoal(2, true);
-    AddMessage('Sygnał wysłany! Broń wieży 10 min! Alya słyszy...');
-    // Start obrony
+    if goal_state[0] = 1 and IsOK(un_humans[3]) and IsInArea(un_humans[3], area_wieza) then
+    begin
+        naprawa_left := naprawa_left + 1;
+        if naprawa_left = 1 then Hint('Naprawa wieży 30s...');
+        if naprawa_left >= 30 then
+        begin
+            goal_state[0] := 0; goal_state[1] := 1;
+            Hint('Wieża naprawiona! Nadaj sygnał Yurim 15s (strefa wieży).');
+        end;
+    end;
+    // Sygnał — Yuri 15s w strefie wieży po naprawie
+    if goal_state[1] = 1 and IsOK(un_humans[1]) and IsInArea(un_humans[1], area_wieza) then
+    begin
+        sygnal_left := sygnal_left + 1;
+        if sygnal_left = 1 then Hint('Nadawanie sygnału 15s...');
+        if sygnal_left >= 15 then
+        begin
+            goal_state[1] := 2;
+            goal_state[2] := 1;
+            Hint('Sygnał wysłany! Broń wieży! Alya słyszy...');
+        end;
+    end;
+    // Licznik obrony
+    if goal_state[2] = 1 and obrona_left > 0 then obrona_left := obrona_left - 1;
 end;
 
 // Fale 3 kierunków skalowane
 Every 90$0 do
 begin
-    if difficulty = 1 and IsGoalEnabled(2) then SpawnWave(faleCount, 'N');
+    if difficulty = 1 and (goal_state[2] = 1) then SpawnWave(faleCount, 'N');
 end;
 Every 60$0 do
 begin
-    if difficulty = 2 and IsGoalEnabled(2) then SpawnWave(faleCount, 'N');
+    if difficulty = 2 and (goal_state[2] = 1) then SpawnWave(faleCount, 'N');
 end;
 Every 120$0 do
 begin
-    if difficulty = 0 and IsGoalEnabled(2) then SpawnWave(faleCount, 'N');
+    if difficulty = 0 and (goal_state[2] = 1) then SpawnWave(faleCount, 'N');
 end;
 
 export function SpawnWave(count, dir);
@@ -116,29 +151,27 @@ begin
     // Wabienie w anomalie brzegowe — na Łatwym wpadają, na Trudnym omijają
 end;
 
-// Miny
-export function PlaceMineAt(x,y);
+// Miny dodatkowe (poza auto-rozstawieniem) — zdalne strony 1
+export function PlaceMineAt(x, y);
 begin
-    if miny <= 0 then Exit;
-    // PlaceMine(x,y)
-    miny := miny - 1;
-    AddMessage('Mina postawiona. Zostało: ' + IntToStr(miny));
+    PlaceMine(x, y, 1, 0);
+    Hint('Mina postawiona.');
 end;
 
 Every 0$5 do
 begin
-    if IsGoalEnabled(2) and GetHitPoints(un_wieza) <= 0 then
+    if (goal_state[2] = 1) and GetLives([un_wieza]) <= 0 then
     begin
-        SetGoalState(2, goal_failed);
-        YouLose;
+        goal_state[2] := 3;
+        YouLost('PZ10_WIEZA');
     end;
-    if IsGoalEnabled(2) and GetGoalTime(2) <= 0 then
+    if (goal_state[2] = 1) and obrona_left <= 0 then
     begin
-        SetGoalState(2, goal_achieved);
+        goal_state[2] := 2;
+        SaveCharacters([un_humans[0], un_humans[1], un_humans[2], un_humans[3], un_humans[4]], 'pz_team');
         YouWin;
     end;
 end;
 
 // Postapo: wieża na wzniesieniu widoczna dla wszystkich — 3 kierunki logiczne (audyt)
 // 3 poziomy równocześnie — obligatoryjnie, solucja: docs/solucje/10 - Solucja - Przechwycenie Sygnału.pdf
-

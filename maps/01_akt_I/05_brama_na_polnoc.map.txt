@@ -7,3 +7,11 @@ Strefy fabularne:
 - Dialog Siergiej vs Viktor 32,30 — PZ05_02 Viktor: Przepraszam, Siergiej... — strzał, barykada pada PZ05_06
 - Jeśli Maya zginie przy podkładaniu PZ05_07 → 14_krater trudny rozbrajanie 30s, brak inżyniera
 Edytor: mountain przełęcz wąskie gardło 8 kafli, barykada b_wall 3 segmenty, widok śnieżny. Skalowanie obrona Ł 3 min ammo 40 / Ś 2 min ammo 20 / T 1.5 min ammo 12. Konsekwencja fabularna przenoszona via GetGlobalVar maya_05.
+
+STREFY SAIL (obowiązkowe w Edytorze, nazwy 1:1):
+- area_mat1
+- area_mat2
+- area_mat3 (złoża)
+- area_warsztat (craft 32,70)
+- areaBarykada (32,20)
+- area_escape_polnoc (32,5)

@@ -6,3 +6,9 @@ Strefy fabularne:
 - Patrole Małpoludów Apemen 4 grupy: 20,20 80,20 20,80 80,80 — na hałas (strzał/demontaż bez tłumika) wataha 2/3/4 biegnie PZ04_06
 - Ur 70,70 — jeśli podejdziesz bez strzału i z Karimen (arabski akcent rozumie), oswojenie — dołącza w 14 jako wsparcie Apemen (nie musisz zabijać)
 Edytor: battlefield kratery, wraki b_factory zrujnowane, noc visibility 8/6/5 krat per poziom, dźwięk tłumiony. Skalowanie demontaż 10/15/20s, hałas wrażliwość Ł niska / T wysoka. PZ04_01 Maya, PZ04_02 Ur.
+
+STREFY SAIL (obowiązkowe w Edytorze, nazwy 1:1):
+- area_wrak1 (30,30)
+- area_wrak2 (70,30)
+- area_wrak3 (30,70)
+- area_wrak4 (70,70, krater Ura)

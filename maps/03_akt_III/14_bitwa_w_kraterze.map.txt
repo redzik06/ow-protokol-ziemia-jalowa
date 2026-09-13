@@ -7,3 +7,8 @@ Strefy fabularne:
 - Silos 3 S 64,90 Miron Karpov 57 w b_shelter + 4 eskorta — finał Yuri→Miron PZ14_01/02/05: Podpisałeś, Jurij? Teraz patrz... / Podpisałem. Teraz skreślam. — strzał
 - Fale 6/8/10 piechoty co 90/45/30s od krawędzi, lód na T, silosy daleko 30/60/80 krat
 Edytor: crater 128×128, krater środek, 3 rogi silosy b_rocket_silo, fale Legion+RU. SAIL 14_misja.sail voices Miron rosyjski akcent stary, Yuri rosyjski. Konsekwencja: jeśli Farid żyje, łatwiej przekonać Chena.
+
+STREFY SAIL (obowiązkowe w Edytorze, nazwy 1:1):
+- area_silos_1 (NW 20,20)
+- area_silos_2 (NE 100,20)
+- area_silos_3 (S 64,90)

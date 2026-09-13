@@ -7,3 +7,7 @@ Strefy fabularne:
 - Wybór fabularny 60,24 wąwóz — dialog PZ12_01 Viktor vs PZ12_02 Karim: Ty zdradziłeś Legion, ja rozkazy... — szturm (Viktor niszczy dowódcę, Karim ranny PZ12_04) vs negocjacje (Karim zabija dowódcę, Viktor ginie osłaniając PZ12_05) — zależnie od dyskusji
 - Jeśli Karim zginie PZ12_03 tracisz Mastodona na zawsze — w 14/15 brak half-tracka
 Edytor: ice_river, SetFriction 0.2 via SAIL Every 0$5, rzeka 12 kafli, brzegi blocked. Skalowanie poślizg + HP dowódcy. SAIL 12_misja.sail voices Viktor rosyjski /Karim arabski. Konsekwencja przenoszona via GlobalVar viktor_12/karim_12.
+
+STREFY SAIL (obowiązkowe w Edytorze, nazwy 1:1):
+- area_lod (rzeka 18-30)
+- area_wybor (60,24 wąwóz)

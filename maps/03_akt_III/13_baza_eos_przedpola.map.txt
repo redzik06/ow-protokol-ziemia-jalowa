@@ -7,3 +7,9 @@ Strefy fabularne:
 - Legendy oficerów: Sokolov 20,20 dialog łatwy, Chen 90,20 mini-boss Half-Tracked, Reyes 20,90 zaminowany — fabularnie każdy kod to pamiętnik Mirona
 - Timer 25/20/15 min + ciągły ostrzał autosektur jeśli nie hackujesz — szturm na T = śmierć
 Edytor: bunker_exterior beton, piaski, 4 rogi terminale, pierścień obronny. SAIL 13_misja.sail PZ13_02/03. Po 4 terminalach PZ13_03 krater otwarty.
+
+STREFY SAIL (obowiązkowe w Edytorze, nazwy 1:1):
+- area_term1 (20,20)
+- area_term2 (90,20)
+- area_term3 (20,90)
+- area_term4 (90,90)

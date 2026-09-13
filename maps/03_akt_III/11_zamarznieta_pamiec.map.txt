@@ -7,3 +7,6 @@ Strefy fabularne:
 - Echo-baz 50,50 — dialog PZ11_01/02/03, po 60s hack Yuri 20s → kody do 13 (Sokolov Alfa) + master EON-2
 Edytor: indoor_bunker tileset, CreateLight per człowiek, SetVisibility 6-10 krat. Wrogowie: zombi RU z 2004 (stasis) 6/8/10 patrole ciche. Mechanika 11_misja.sail. Voices Elena neutral, Yuri rosyjski akcent, Echo-baz syntetyczny.
 Przejście: bez walki głośnej — stealth, latarki. Wiedza = klucze do 13/14.
+
+STREFY SAIL (obowiązkowe w Edytorze, nazwy 1:1):
+- area_rdzen (50,50)

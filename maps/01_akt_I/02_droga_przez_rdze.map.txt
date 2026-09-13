@@ -7,3 +7,11 @@ Strefy fabularne:
 - Meta B 90,24 wyjazd — wymaga paliwa >15% by nie stanać
 Edytor: canyon wąski korytarz 12 kafli szerokości, wraki jako b_depot zrujnowane, mgła pyłowa. Skalowanie: Ł 2 wraki wystarczą i 3 patrole, Ś 3 wraki i 5 patroli, T 4 wraki i 7 patroli spalanie x2. SAIL 02_misja.sail + voices PZ02_01 Elena, PZ02_02 Viktor.
 Decyzja: Wiktor buff -20% paliwo od 06 — tu paliwo jest testem przed buffem.
+
+STREFY SAIL (obowiązkowe w Edytorze, nazwy 1:1):
+- area_meta (wyjazd B 90,24)
+- area_wrak1 (25,24)
+- area_wrak2 (40,20)
+- area_wrak3 (55,24)
+- area_wrak4 (70,20)
+- area_wrak5 (85,24)

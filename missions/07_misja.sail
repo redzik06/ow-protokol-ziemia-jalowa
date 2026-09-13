@@ -4,122 +4,176 @@
 ; Zasada: nowa historia nie związana z ori, postapo, 3 poziomy równocześnie, poprawna pisownia PL
 
 int generatorHP = 500;
-int obronaTimer = 0;
+int obronaTimer = 0; // sekundy obrony (600/480/360)
+int mech_inside = 0; // Maya w generatorze (EnterBuilding/LeaveBuilding)
+int hack_prog[3];
+int hack_need = 10; // sekundy hacku wieżyczki: 8/10/15
 
-export un_humans[5];
+export un_humans[6];
 export un_generator;
 export un_turrets[3];
 
+int goal_state[3]; // 0=off 1=aktywny 2=done 3=fail
+
 Starting
 begin
-    RegisterGoal(0, 'OCZYSC_PRZEPOMPOWNIE');
-    RegisterGoal(1, 'OBRONA_8MIN');
-    EnableGoal(0, true); EnableGoal(1, true);
+    // cel 0: OCZYSC_PRZEPOMPOWNIE
+    // cel 1: OBRONA_8MIN
+    goal_state[0] := 1; goal_state[1] := 1;
 
     // Drużyna 5 + Branch (Wiktor/Farid)
     uc_side := 1; uc_nation := nation_american; uc_x := 48; uc_y := 80;
     hc_name := 'Elena Varga'; hc_class := class_mechanic; hc_skills := [2,2,5,1];
+    hc_gallery := 1; hc_face_number := 1;
     un_humans[0] := CreateHuman;
     uc_x := 49; hc_name := 'Yuri Kamarov'; hc_class := class_scientistic; hc_skills := [1,1,2,5];
+    hc_gallery := 1; hc_face_number := 2;
     un_humans[1] := CreateHuman;
     uc_x := 50; hc_name := 'Viktor Drachev'; hc_class := class_soldier; hc_skills := [5,1,2,1];
+    hc_gallery := 1; hc_face_number := 3;
     un_humans[2] := CreateHuman;
     uc_x := 48; uc_y := 81; hc_name := 'Maya Torres'; hc_class := class_engineer; hc_skills := [2,5,3,2];
+    hc_gallery := 1; hc_face_number := 4;
     un_humans[3] := CreateHuman;
     uc_x := 49; uc_y := 81; hc_name := 'Karim Al-Rashid'; hc_class := class_desert_warior; hc_skills := [5,1,1,1];
+    hc_gallery := 1; hc_face_number := 5;
     un_humans[4] := CreateHuman;
-    // Branch via GetGlobalVar rekrut_06 — spawn Wiktor/Farid jeśli wybrany
-    if GetGlobalVar('rekrut_06') = 1 then
-    begin
-        uc_x := 50; uc_y := 81; hc_name := 'Wiktor Volkov'; hc_class := class_mechanic;
-        CreateHuman;
-    end
-    else if GetGlobalVar('rekrut_06') = 2 then
+    // Branch via TestVariable (SaveVariable z 06) — spawn Wiktor/Farid jeśli wybrany
+    // Brak obu = start z pominięciem 06 → domyślnie Wiktor (Sojusz)
+    if TestVariable('rekrut_farid') then
     begin
         uc_x := 50; uc_y := 81; hc_name := 'Farid Al-Hadi'; hc_class := class_scientistic;
-        CreateHuman;
+        hc_gallery := 1; hc_face_number := 7;
+        un_humans[5] := CreateHuman;
+    end
+    else
+    begin
+        uc_x := 50; uc_y := 81; hc_name := 'Wiktor Volkov'; hc_class := class_mechanic;
+        hc_gallery := 1; hc_face_number := 6;
+        un_humans[5] := CreateHuman;
     end;
 
     // Przepompownia i generator — skalowane trudnością
     // b_siberite_mine? Tu b_depot jako przepompownia
-    bc_side := 1; bc_type := b_depot; bc_x := 48; bc_y := 48;
+    uc_side := 1; bc_type := b_depot; uc_x := 48; uc_y := 48;
     un_generator := CreateBuilding; // generator jako budynek
     if difficulty = 0 then generatorHP := 700
     else if difficulty = 1 then generatorHP := 500
     else generatorHP := 300;
-    SetHitPoints(un_generator, generatorHP);
+    SetLives([un_generator], generatorHP);
 
-    // 3 wieżyczki do przejęcia — początkowo neutral/wróg, po hacku SetSide 1
-    // Pozycje: 40,48 56,48 48,60
-    // Tworzone jako b_turret
+    // 3 wieżyczki b_turret strony 2 do przejęcia — pozycje 40,48 56,48 48,60
+    uc_side := 2; bc_type := b_turret;
+    uc_x := 40; uc_y := 48; un_turrets[0] := CreateBuilding;
+    uc_x := 56; uc_y := 48; un_turrets[1] := CreateBuilding;
+    uc_x := 48; uc_y := 60; un_turrets[2] := CreateBuilding;
 
     // Skalowanie obrony
-    if difficulty = 0 then obronaTimer := 10$00 // łatwy 10 min + fale co 120s
-    else if difficulty = 1 then obronaTimer := 8$00 // średni 8 min fale co 90s
-    else obronaTimer := 6$00; // trudny 6 min fale co 60s
+    if difficulty = 0 then begin obronaTimer := 600; hack_need := 8; end // łatwy 10 min + fale co 120s
+    else if difficulty = 1 then begin obronaTimer := 480; hack_need := 10; end // średni 8 min fale co 90s
+    else begin obronaTimer := 360; hack_need := 15; end; // trudny 6 min fale co 60s
 
-    if difficulty = 0 then AddHint('Łatwy: generator 700 HP, 10 min, fale 4 co 120s, wieżyczki mocne.')
-    else if difficulty = 1 then AddHint('Średni: 500 HP, 8 min, fale 6 co 90s.')
-    else AddHint('Trudny: 300 HP, 6 min, fale 8 co 60s, ciągła naprawa.');
+    if difficulty = 0 then Hint('Łatwy: generator 700 HP, 10 min, fale 4 co 120s, wieżyczki mocne.')
+    else if difficulty = 1 then Hint('Średni: 500 HP, 8 min, fale 6 co 90s.')
+    else Hint('Trudny: 300 HP, 6 min, fale 8 co 60s, ciągła naprawa.');
 
     ForceSay(un_humans[1], 'PZ07_01'); // Yuri: "Prąd jest. Dopóki ktoś nie kichnie."
     CenterOnXY(48,48);
 end;
 
-// Naprawa generatora — tylko Inżynier/Mechanik
+// Naprawa generatora — tylko Maya w środku (flagi z EnterBuilding/LeaveBuilding)
+export function EnterBuilding(building, un);
+begin
+    if building = un_generator and un = un_humans[3] then mech_inside := 1; // Maya
+end;
+export function LeaveBuilding(building, un);
+begin
+    if building = un_generator and un = un_humans[3] then mech_inside := 0;
+end;
 Every 1$0 do
 begin
-    if IsOK(un_generator) and IsInBuilding(un_humans[3], un_generator) then // Maya
+    if IsOK(un_generator) and mech_inside = 1 then
     begin
-        if GetHitPoints(un_generator) < generatorHP then
-            SetHitPoints(un_generator, GetHitPoints(un_generator) + 5);
+        if GetLives([un_generator]) < generatorHP then
+            SetLives([un_generator], GetLives([un_generator]) + 5);
         // Wiktor buff +2 na Łatwym
-        if difficulty = 0 and IsOK(un_humans[5]) then SetHitPoints(un_generator, GetHitPoints(un_generator) + 2);
+        if difficulty = 0 and IsOK(un_humans[5]) then SetLives([un_generator], GetLives([un_generator]) + 2);
     end;
-    if GetHitPoints(un_generator) <= 0 then
+    if GetLives([un_generator]) <= 0 then
     begin
         // wieżyczki offline
-        AddMessage('Generator padł! Wieżyczki offline!');
+        Hint('Generator padł! Wieżyczki offline!');
     end;
 end;
 
-// Fale Legionu — skalowane
+// Fale Legionu — skalowane (spawn z północy)
+export function SpawnWave07(count);
+begin
+    uc_side := 2; uc_nation := nation_arabian; hc_class := class_soldier;
+    for i := 1 to count do
+    begin
+        uc_x := 48 + Rand(-30,30); uc_y := 5; CreateHuman;
+    end;
+end;
+
+Every 120$0 do
+begin
+    if difficulty = 0 and (goal_state[1] = 1) then SpawnWave07(4);
+end;
+
 Every 90$0 do
 begin
-    if difficulty = 0 then // łatwy co 120s ale Every 90 więc co drugie
-    begin
-        // 4 wrogów
-    end;
-    // Real: spawn via CreateHuman
+    if difficulty = 1 and (goal_state[1] = 1) then SpawnWave07(6);
 end;
 
 Every 60$0 do
 begin
-    if difficulty = 2 then
+    if difficulty = 2 and (goal_state[1] = 1) then SpawnWave07(8);
+end;
+
+// Hack wieżyczek — Maya w strefie wieży (area_tur1..3), postęp co 1s
+export function HackPostep07(idx, areaTur);
+begin
+    if IsOK(un_turrets[idx]) and GetSide(un_turrets[idx]) <> 1 then
     begin
-        // trudny co 60s 8 wrogów
+        if IsOK(un_humans[3]) and IsInArea(un_humans[3], areaTur) then
+        begin
+            hack_prog[idx] := hack_prog[idx] + 1;
+            if hack_prog[idx] >= hack_need then
+            begin
+                SetSide(un_turrets[idx], 1);
+                Hint('Wieżyczka przejęta!');
+            end;
+        end;
     end;
 end;
 
-// Hack wieżyczek — Inżynier 10/15/20s? Już w 07 przejęcie via terminal
-export function HackTurret(human, turret);
+Every 1$0 do
 begin
-    if GetHumanClass(human) <> class_engineer then Exit;
-    Wait(10$0); // skalowane? łatwy 8, średni 10, trudny 15 — placeholder 10
-    SetSide(turret, 1);
-    AddMessage('Wieżyczka przejęta!');
+    HackPostep07(0, area_tur1);
+    HackPostep07(1, area_tur2);
+    HackPostep07(2, area_tur3);
+    // Licznik obrony
+    if (goal_state[1] = 1) and obronaTimer > 0 then obronaTimer := obronaTimer - 1;
 end;
 
 Every 0$5 do
 begin
-    obronaTimer := obronaTimer - 0$5;
-    if obronaTimer <= 0 then
+    if (goal_state[1] = 1) and obronaTimer <= 0 then
     begin
-        SetGoalState(1, goal_achieved);
-        YouWin;
+        if IsOK(un_generator) then
+        begin
+            goal_state[1] := 2;
+            SaveCharacters([un_humans[0], un_humans[1], un_humans[2], un_humans[3], un_humans[4]], 'pz_team');
+            YouWin;
+        end
+        else
+        begin
+            goal_state[1] := 3;
+            YouLost('PZ07_GEN');
+        end;
     end;
 end;
 
 // Postapo: woda pod zmarzliną jedyna czysta — Lina Needle w 03 wpływa na leki tu
 // 3 poziomy równocześnie — obligatoryjnie, solucja: docs/solucje/07 - Solucja - Czysty Tlen.pdf
-

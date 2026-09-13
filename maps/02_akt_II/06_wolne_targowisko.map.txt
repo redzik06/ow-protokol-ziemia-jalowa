@@ -8,3 +8,6 @@ Strefy fabularne:
 - Wyjścia: timer 60s Ł /30s Ś /20s T na decyzję — po czasie Legion atakuje i tracisz obu
 Edytor: ruins_town namioty b_shelter, brak walki w środku (strefa safe), dźwięk bazaru. Mechanika branch SetGlobalVar rekrut_06=1/2. Po wyborze PZ06_06/PZ06_07. SAIL 06_misja.sail voices Wiktor rosyjski akcent / Farid arabski.
 Konsekwencja: Wiktor→HT lepszy w 08 (progress +1), Farid→filtr lepszy w 15 (Alya zdrada sceną PZ15_03).
+
+STREFY SAIL (obowiązkowe w Edytorze, nazwy 1:1):
+- area_rynek (32,32)

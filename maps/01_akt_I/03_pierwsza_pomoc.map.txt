@@ -7,3 +7,15 @@ Strefy fabularne:
 - Filtry: 6 filtrów crate Ł /5 Ś/T — podnosi HP +20, timer dekontaminacji PZ03_06
 - Radio RU 60,60 maszt — wyzwala rozkaz Mirona dla Viktora
 Edytor: snow_ruins, zamieć cząsteczki, 4 budynki b_shelter, apteka centralna, mgła. Mechanika Choroba Pyłowa 99/03. Po misji Lina dołącza informacyjnie (nie persistent) ale daje filtry na 04-05.
+
+STREFY SAIL (obowiązkowe w Edytorze, nazwy 1:1):
+- area_ewakuacja
+- area_leki1
+- area_leki2
+- area_leki3 (apteka 40,40)
+- area_filtr1
+- area_filtr2
+- area_filtr3
+- area_filtr4
+- area_filtr5
+- area_filtr6

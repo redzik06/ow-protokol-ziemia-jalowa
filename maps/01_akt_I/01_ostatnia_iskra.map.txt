@@ -2,9 +2,13 @@ MAP 01 — Ostatnia Iskra — FABUŁA 72x72 ruins + dust — Rozpad Alpha
 Fabuła: Baza Alpha AR porzucona 6 mies., żyła kryształu Alaskitu pod koszarami odsłonięta przez trzęsienie. Legion Alyi atakuje o świcie by przejąć żyłę. Elena Varga (29, mechanik) z 4 ocalałymi szuka klucza 17 do HT.
 Start fabularny: koszary 10,10 Elena+Yuri+Viktor+Maya+Karim (5) ranni, HP 70% — po eksplozji magazynu. Dialog PZ01_01 Elena i PZ01_02 Yuri przy bramie.
 Kluczowe strefy fabularne:
-- 36,36 Transporter HT ciężki gąsienicowy us_heavy_tracked (jedyny pojazd AR, paliwo 60%) — cel ucieczki. W środku मृतwi załoganci Alpha — loot crate mat_cans x10
+- 36,36 Transporter HT ciężki gąsienicowy us_heavy_tracked (jedyny pojazd AR, paliwo 60%) — cel ucieczki. W środku martwi załoganci Alpha — loot crate mat_cans x10
 - 40,40 żyła Syberytu b_siberite_mine (niewidoczna pod gruzem, SAIL ujawnia po 30s) — powód ataku Legionu
 - 50,50 dziennik bazy b_lab 40,40 — odczyt Yuri naukowiec 10s uruchamia PZ01_03 (Rook miał rację)
 - Wyjście pn 36,5 brama + patrol Legionu ar 20,20 i 50,20 — blokada, trzeba cicho (hałas → wataha Apemen)
 Edytor: tileset ruins+dust, pyłowa mgła 30%, gruzy 40%, 2 patrole Ł /3 Ś /4 T Małpoludy (Apemen) klasa apeman, wataha 2/3/4 przy strzale. SAIL 01_misja.sail: HT HP 80/70/50, timer 20/15/10 min, 3 poziomy równocześnie.
 Spójność: persistent 5 ocalonych → 02. Jeśli ktoś zginie tu, brak go dalej (CountProfession w 15).
+
+STREFY SAIL (obowiązkowe w Edytorze, nazwy 1:1):
+- area_ewakuacja (brama pn 36,5)
+- area_dziennik (barak z dziennikiem)

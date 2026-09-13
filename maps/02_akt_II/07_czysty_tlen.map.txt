@@ -8,3 +8,8 @@ Strefy fabularne:
 - Fale Legionu 3 kierunki: pn 48,10 wsch 80,48 zach 16,48 co 90s (Ł 4 / Ś 6 / T 8)
 Edytor: snow_valley dolina, rzeka zamarznięta pod śniegiem, wieżyczki b_turret. Timer 10 min obrony. PZ07_01 Yuri, PZ07_04 Lina echo. SAIL 07_misja.sail.
 Po wygranej: dostajesz crate wody +5 filtrów (łuży)
+
+STREFY SAIL (obowiązkowe w Edytorze, nazwy 1:1):
+- area_tur1 (30,30)
+- area_tur2 (66,30)
+- area_tur3 (48,66)

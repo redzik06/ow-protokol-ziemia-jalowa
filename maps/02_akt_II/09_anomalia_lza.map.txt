@@ -7,3 +7,12 @@ Strefy fabularne:
 - Ekwipunek: 2 HT muszą przejechać bez zwarć — Zwarcie na T wyłącza oba HT na 15s i przywołuje patrol Apemen
 Edytor: wasteland_anomaly kratery, świecący Syberyt b_siberite_mine, efekty cząsteczek per typ. Mechanika 04 - System Anomalie.md poprawiona HT vs HT2. SAIL 09_misja.sail voices Yuri rosyjski akcent, Karim arabski.
 Przejście uczy gracza — w 10 miny + anomalie jako pułapki.
+
+STREFY SAIL (obowiązkowe w Edytorze, nazwy 1:1):
+- area_anomalia_zrodlo_1
+- area_anomalia_zrodlo_2
+- area_anomalia_cofka_1
+- area_anomalia_cofka_2
+- area_anomalia_zwarcie_1
+- area_anomalia_zwarcie_2
+- area_meta (90,20 wrak EON-2)

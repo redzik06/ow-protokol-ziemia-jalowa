@@ -6,3 +6,10 @@ Strefy fabularne:
 - Fale Legion co 120s Ł 4 /60s Ś 6 /45s T 8 od pn 40,5 — jeśli masz Wiktora progress +2 Ł /+1 Ś /+0.7 T vs bez Wiktora +1/+1/+1
 - HT start 40,55 + drużyna — obrona 60s po złożeniu 100% → YouWin PZ08_04, jeśli warsztat zniszczony przed 100% → YouLose
 Edytor: industrial hala bez prądu, suwnica, ciemno. Mechanika 08_misja.sail: progress, crates, fale skalowane. Voices PZ08_01 Maya, PZ08_02 Wiktor. Po 08: jeśli brak 2 HT → 12 trudniejszy poślizg (1 pojazd łatwiej stracić)
+
+STREFY SAIL (obowiązkowe w Edytorze, nazwy 1:1):
+- area_czesc1 (10,20)
+- area_czesc2 (70,20)
+- area_czesc3 (10,50)
+- area_czesc4 (70,50)
+- area_warsztat (40,32)

@@ -7,3 +7,6 @@ Strefy fabularne:
 - 3 zakończenia Cutscenka: A log Sojuszu + Apemeni osada, B log Legion + handel Syberytem, C log jałowa + epoka kamienia — zależne od CountProfession klasa scientistic vs mechanic
 Edytor: indoor_server 80×80, serwerownia 40×40, filtry 3 typy wiszą, światła awaryjne. SAIL 15_misja.sail PZ15_05/06/07/08 + YouWin/YouLose. Solucja lista 3 warianty + 3 endingi.
 To ostatni test składu — tylko ludzie przeprowadzeni przez 01-14 decydują o końcu.
+
+STREFY SAIL (obowiązkowe w Edytorze, nazwy 1:1):
+- area_terminal (40,45)

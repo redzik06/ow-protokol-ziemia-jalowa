@@ -5,99 +5,128 @@
 
 int progress = 0;
 int progress_max = 100;
+int czesci = 0;
+int czesc_taken[4];
 
-export un_humans[5];
+export un_humans[6];
 export un_warsztat;
+
+int goal_state[3]; // 0=off 1=aktywny 2=done 3=fail
 
 Starting
 begin
-    RegisterGoal(0, 'ZBIERZ_4_CZESCI');
-    RegisterGoal(1, 'ZLOZ_POJAZD');
-    RegisterGoal(2, 'PRZETRWAJ_FALE');
-    EnableGoal(0, true);
+    // cel 0: ZBIERZ_4_CZESCI
+    // cel 1: ZLOZ_POJAZD
+    // cel 2: PRZETRWAJ_FALE
+    goal_state[0] := 1;
 
     // Drużyna 5 + Branch
     uc_side := 1; uc_nation := nation_american; uc_x := 40; uc_y := 50;
     hc_name := 'Elena Varga'; hc_class := class_mechanic; hc_skills := [2,2,5,1];
+    hc_gallery := 1; hc_face_number := 1;
     un_humans[0] := CreateHuman;
     uc_x := 41; hc_name := 'Yuri Kamarov'; hc_class := class_scientistic; hc_skills := [1,1,2,5];
+    hc_gallery := 1; hc_face_number := 2;
     un_humans[1] := CreateHuman;
     uc_x := 42; hc_name := 'Viktor Drachev'; hc_class := class_soldier; hc_skills := [5,1,2,1];
+    hc_gallery := 1; hc_face_number := 3;
     un_humans[2] := CreateHuman;
     uc_x := 40; uc_y := 51; hc_name := 'Maya Torres'; hc_class := class_engineer; hc_skills := [2,5,3,2];
+    hc_gallery := 1; hc_face_number := 4;
     un_humans[3] := CreateHuman;
     uc_x := 41; uc_y := 51; hc_name := 'Karim Al-Rashid'; hc_class := class_desert_warior; hc_skills := [5,1,1,1];
+    hc_gallery := 1; hc_face_number := 5;
     un_humans[4] := CreateHuman;
+    // Branch z 06 (TestVariable) — domyślnie Wiktor
+    if TestVariable('rekrut_farid') then
+    begin
+        uc_x := 42; uc_y := 51; hc_name := 'Farid Al-Hadi'; hc_class := class_scientistic;
+        hc_gallery := 1; hc_face_number := 7;
+        un_humans[5] := CreateHuman;
+    end
+    else
+    begin
+        uc_x := 42; uc_y := 51; hc_name := 'Wiktor Volkov'; hc_class := class_mechanic;
+        hc_gallery := 1; hc_face_number := 6;
+        un_humans[5] := CreateHuman;
+    end;
 
     // Warsztat jako budynek b_factory
-    bc_side := 1; bc_type := b_factory; bc_x := 40; bc_y := 32;
+    uc_side := 1; bc_type := b_factory; uc_x := 40; uc_y := 32;
     un_warsztat := CreateBuilding;
 
-    // 4 części — crate: silnik, gąsienice, pancerz, wieżyczka
+    // 4 części — strefy area_czesc1..4 na mapie: silnik, gąsienice, pancerz, wieżyczka
     // Pozycje: 10,20 70,20 10,50 70,50 — na Trudnym 1 strzeżona
-    // Tworzone via CreateCrate
 
-    // Skalowanie trudnością — progress, fale, czas, Wiktor buff
-    if difficulty = 0 then // łatwy — +2/s, fale 4 co 120s, 12 min, części blisko
+    // Skalowanie trudnością — próg progressu, fale, Wiktor buff
+    if difficulty = 0 then // łatwy — próg 100 (+2/s), fale 4 co 120s, części blisko
     begin
-        AddHint('Łatwy: części blisko, progress +2/s, fale 4 co 120s, 12 min. Wiktor +3.');
+        progress_max := 100;
+        Hint('Łatwy: części blisko, progress +2/s, fale 4 co 120s. Wiktor +1/s.');
     end
-    else if difficulty = 1 then // średni — +1/s, fale 6 co 60s, 10 min
+    else if difficulty = 1 then // średni — próg 100 (+1/s), fale 6 co 60s
     begin
-        AddHint('Średni: części rozrzucone, +1/s, fale 6 co 60s, 10 min. W warsztacie bezpieczniej.');
+        progress_max := 100;
+        Hint('Średni: części rozrzucone, +1/s, fale 6 co 60s. W warsztacie bezpieczniej.');
     end
-    else // trudny — +0.7/s, fale 8 co 45s, 8 min, 1 część strzeżona, Wiktor tylko +1
+    else // trudny — próg 140 (+1/s, wolniej), fale 8 co 45s, 1 część strzeżona
     begin
-        AddHint('Trudny: daleko + strzeżona, +0.7/s, fale 8 co 45s, 8 min. Warsztat = pułapka.');
+        progress_max := 140;
+        Hint('Trudny: daleko + strzeżona, próg 140, fale 8 co 45s. Warsztat = pułapka.');
     end;
 
     ForceSay(un_humans[3], 'PZ08_01'); // Maya: "Spawaj szybciej..."
     CenterOnXY(40,32);
 end;
 
-// Progress craft — tylko gdy Mechanik/Inżynier w warsztacie
+// Części 4 (area_czesc1..4 na mapie) — wejście człowieka = część, raz każda
 Every 1$0 do
 begin
-    if FilterUnitsInArea(area_warsztat, 1) > 0 then
+    if czesc_taken[0] = 0 and FilterUnitsInArea(area_czesc1, [f_side, 1]) <> [] then begin czesc_taken[0] := 1; czesci := czesci + 1; Hint('Część +1/4.'); end;
+    if czesc_taken[1] = 0 and FilterUnitsInArea(area_czesc2, [f_side, 1]) <> [] then begin czesc_taken[1] := 1; czesci := czesci + 1; Hint('Część +1/4.'); end;
+    if czesc_taken[2] = 0 and FilterUnitsInArea(area_czesc3, [f_side, 1]) <> [] then begin czesc_taken[2] := 1; czesci := czesci + 1; Hint('Część +1/4.'); end;
+    if czesc_taken[3] = 0 and FilterUnitsInArea(area_czesc4, [f_side, 1]) <> [] then begin czesc_taken[3] := 1; czesci := czesci + 1; Hint('Część +1/4.'); end;
+    if czesci >= 4 then goal_state[0] := 2;
+end;
+
+// Progress craft — tylko gdy Mechanik/Inżynier (Elena/Maya/Wiktor) w warsztacie
+function WarsztatObsluga: Boolean;
+begin
+    Result := (IsOK(un_humans[0]) and IsInArea(un_humans[0], area_warsztat))
+        or (IsOK(un_humans[3]) and IsInArea(un_humans[3], area_warsztat))
+        or (IsOK(un_humans[5]) and IsInArea(un_humans[5], area_warsztat));
+end;
+
+Every 1$0 do
+begin
+    if goal_state[1] <> 2 and WarsztatObsluga and czesci >= 4 then
     begin
-        // Sprawdź czy ma części
-        if GetCollectedParts >= 4 then
+        if difficulty = 0 then progress := progress + 2
+        else progress := progress + 1;
+        if IsOK(un_humans[5]) and IsInArea(un_humans[5], area_warsztat) then progress := progress + 1; // Wiktor pomaga
+        if progress > progress_max then progress := progress_max;
+        Hint('Warsztat: ' + progress + '%');
+        if progress >= progress_max then
         begin
-            if difficulty = 0 then
+            // Stwórz 2. pojazd
+            uc_side := 1; vc_chassis := us_heavy_tracked; vc_engine := engine_combustion; vc_control := control_manual; vc_weapon := us_heavy_gun;
+            uc_x := 40; uc_y := 35;
+            CreateVehicle;
+            goal_state[1] := 2;
+            Hint('2. pojazd gotowy! Konwój wzmocniony.');
+            goal_state[2] := 1;
+            // Fala obrony 60s po złożeniu — potem zwycięstwo
+            Wait(60$0);
+            if IsOK(un_warsztat) then
             begin
-                progress := progress + 2;
-                if IsOK(un_humans[5]) then progress := progress + 1; // Wiktor +1 na Łatwym = +3
+                goal_state[2] := 2;
+                SaveCharacters([un_humans[0], un_humans[1], un_humans[2], un_humans[3], un_humans[4]], 'pz_team');
+                YouWin;
             end
-            else if difficulty = 1 then progress := progress + 1
             else
             begin
-                progress := progress + 1; // trudny 0.7 ~1 co 1s + Wiktor +0?
-                // Wiktor tylko +0 na Trudnym — symulacja +0.7 via co 2s +1 i co 3s +2
-            end;
-            if progress > progress_max then progress := progress_max;
-            // HUD: SetProgressBar(progress)
-            AddMessage('Warsztat: ' + IntToStr(progress) + '%');
-            if progress >= 100 then
-            begin
-                // Stwórz 2. pojazd
-                vc_side := 1; vc_chassis := us_heavy_tracked; vc_engine := engine_combustion; vc_control := control_manual; vc_weapon := us_heavy_gun;
-                vc_x := 40; vc_y := 35;
-                CreateVehicle;
-                SetGoalState(1, goal_achieved);
-                AddMessage('2. pojazd gotowy! Konwój wzmocniony.');
-                EnableGoal(2, true);
-                // Fala obrony 60s po złożeniu — potem zwycięstwo
-                Wait(60);
-                if IsOK(un_warsztat) then
-                begin
-                    SetGoalState(2, goal_achieved);
-                    YouWin;
-                end
-                else
-                begin
-                    SetGoalState(2, goal_failed);
-                    YouLose;
-                end;
+                goal_state[2] := 3;
+                YouLost('PZ08_WARSZTAT');
             end;
         end;
     end;
@@ -132,21 +161,14 @@ begin
     end;
 end;
 
-function GetCollectedParts: Integer;
-begin
-    Result := 0; // placeholder crate count
-end;
-
-
 // Warsztat zniszczony przed końcem = porażka
-Every 1 do
+Every 1$0 do
 begin
-    if not IsOK(un_warsztat) and GetGoalState(1) <> goal_achieved then
+    if not IsOK(un_warsztat) and goal_state[1] <> 2 then
     begin
-        SetGoalState(2, goal_failed);
-        YouLose;
+        goal_state[2] := 3;
+        YouLost('PZ08_WARSZTAT');
     end;
 end;
 // Postapo: hala bez prądu, suwnica ręcznie, części z wraków — utrzymane
 // 3 poziomy równocześnie — obligatoryjnie, solucja: docs/solucje/08 - Solucja - Wzmocnienie Konwoju.pdf
-

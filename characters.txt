@@ -15,7 +15,7 @@ Nation=american
 Class=mechanic
 Gender=female
 Age=29
-Face=elena_varga
+XichtFace=1 ; XichtEd gallery 1, twarz 1
 Skills=4,2,5,1 ; soldier, engineer, mechanic, scientist — mechanic główny
 Persistent=1
 Bio=Detroit, warsztat ojca. Została sama z HT i kluczem 17. Pragmatyczna, twarda, dowódczyni. | Postapo humor: "Jak nie odpali, to przynajmniej będzie ciepło."
@@ -26,7 +26,7 @@ Nation=russian
 Class=scientist
 Gender=male
 Age=41
-Face=yuri_kamarov
+XichtFace=2 ; XichtEd gallery 1, twarz 2
 Skills=1,1,2,5
 Persistent=1
 Bio=Leningrad, Instytut Fizyki Syberytu. Podpisał Protokół w 2004. Jedyny rozumie tech_SibFiss. Cyniczny idealista.
@@ -38,7 +38,7 @@ Class=soldier
 SubClass=bazooker
 Gender=male
 Age=33
-Face=viktor_drachev
+XichtFace=3 ; XichtEd gallery 1, twarz 3
 Skills=5,1,2,1
 Persistent=1
 Bio=Kirow, piechota. Uratował Yuri z płonącego Heavy Wheeled — dług. Nienawidzi Legionu. Kulminacja 12 vs Karim.
@@ -49,7 +49,7 @@ Nation=american
 Class=engineer
 Gender=female
 Age=24
-Face=maya_torres
+XichtFace=4 ; XichtEd gallery 1, twarz 4
 Skills=2,5,3,2
 Persistent=1
 Bio=Przyrodnia siostra Eleny, Epsilon, najmłodsza. Wierzy w Sojusz. Podkłada ładunki w 05. Śmierć = brak inżyniera w 14.
@@ -60,7 +60,7 @@ Nation=arabian
 Class=desert_warrior
 Gender=male
 Age=35
-Face=karim_alrashid
+XichtFace=5 ; XichtEd gallery 1, twarz 5
 Skills=5,1,1,1
 Special=Mastodon_Bura
 Persistent=1
@@ -73,7 +73,7 @@ Nation=russian
 Class=mechanic
 Gender=male
 Age=38
-Face=wiktor_volkov
+XichtFace=6 ; XichtEd gallery 1, twarz 6
 Skills=3,2,5,1
 Persistent=1
 ; Branch 06 Sojusz — via SAIL rekrut_06=1
@@ -86,7 +86,7 @@ Class=scientist
 SubClass=medic
 Gender=male
 Age=32
-Face=farid_alhadi
+XichtFace=7 ; XichtEd gallery 1, twarz 7
 Skills=1,2,2,5
 Persistent=1
 ; Branch 06 Legion — via SAIL rekrut_06=2
@@ -99,7 +99,7 @@ Nation=arabian
 Class=soldier
 Gender=female
 Age=38
-Face=alya_hassan
+XichtFace=8 ; XichtEd gallery 1, twarz 8
 Skills=5,1,2,2
 Persistent=0
 Role=Antagonistka Legion
@@ -111,7 +111,7 @@ Nation=russian
 Class=soldier
 Gender=male
 Age=57
-Face=miron_karpov
+XichtFace=9 ; XichtEd gallery 1, twarz 9
 Skills=5,1,3,2
 Persistent=0
 Role=Antagonista RU, twórca Protokołu
@@ -125,6 +125,7 @@ Class=mechanic
 Age=44
 Persistent=0
 Role=Kwatermistrz Enklawy 06
+XichtFace=10 ; XichtEd gallery 1, twarz 10
 
 [Character: Lina_Ortega]
 Name=Lina Ortega
@@ -134,6 +135,7 @@ Class=scientist
 Age=31
 Persistent=0
 Role=Medyk posterunek 03
+XichtFace=11 ; XichtEd gallery 1, twarz 11
 
 [Character: Ur]
 Name=Ur
@@ -141,6 +143,7 @@ Nation=nature
 Class=apeman
 Persistent=0
 Role=Wódz Krateru, oswojony
+XichtFace=12 ; XichtEd gallery 1, twarz 12
 
 ; Officer codes for 13-14
 [Character: Sokolov]
@@ -149,6 +152,7 @@ Nation=russian
 Class=soldier
 Persistent=0
 Role=Kod Alfa 13
+XichtFace=13 ; XichtEd gallery 1, twarz 13
 
 [Character: Chen]
 Name=Chen
@@ -156,6 +160,7 @@ Nation=russian
 Class=soldier
 Persistent=0
 Role=Kod Beta 14
+XichtFace=14 ; XichtEd gallery 1, twarz 14
 
 [Character: Reyes]
 Name=Reyes
@@ -163,10 +168,12 @@ Nation=american
 Class=soldier
 Persistent=0
 Role=Kod Gamma 14
+XichtFace=15 ; XichtEd gallery 1, twarz 15
 
 ; AI
 [Character: EchoBaz]
 Name=Echo-baz
 Type=AI
 Role=Głos EON-2
+XichtFace=16 ; XichtEd gallery 1, twarz 16 (fallback ForceSayNoFace)
 Note=Bug czarnego humoru: "Szansa przeżycia: 12%. Miłego dnia."
