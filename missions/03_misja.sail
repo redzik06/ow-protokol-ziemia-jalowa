@@ -74,7 +74,7 @@ begin
         Hint('Trudny: zamieć 9 min, -3 HP/s, 2 filtry ukryte. Biegnij budynek->budynek.');
     end;
 
-    // Poprawka sensu 03→05: Viktor dostaje rozkaz Mirona Karpova via radio w 03
+    // Poprawka sensu 03->05: Viktor dostaje rozkaz Mirona Karpova via radio w 03
     Wait(5$0);
     ForceSay(un_lina, 'PZ03_01'); // Lina: "Filtr? Mam. Działa? Też mam. Oba nie naraz."
     Wait(2$0);

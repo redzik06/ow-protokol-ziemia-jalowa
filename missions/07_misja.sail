@@ -39,7 +39,7 @@ begin
     hc_gallery := 1; hc_face_number := 5;
     un_humans[4] := CreateHuman;
     // Branch via TestVariable (SaveVariable z 06) — spawn Wiktor/Farid jeśli wybrany
-    // Brak obu = start z pominięciem 06 → domyślnie Wiktor (Sojusz)
+    // Brak obu = start z pominięciem 06 -> domyślnie Wiktor (Sojusz)
     if TestVariable('rekrut_farid') then
     begin
         uc_x := 50; uc_y := 81; hc_name := 'Farid Al-Hadi'; hc_class := class_scientistic;

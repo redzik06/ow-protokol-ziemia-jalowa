@@ -1,0 +1,10 @@
+// Misja 13 - Baza Eos — Przedpola
+
+$ PZ13_01
+- Terminal prosi o has³o. Has³o: „nie zabijaj mnie”. Wpisujê.
+
+$ PZ13_02
+- Terminal przejêty! %s/4.
+
+$ PZ13_03
+- Pierœcieñ Eos wy³¹czony! Droga do krateru otwarta.

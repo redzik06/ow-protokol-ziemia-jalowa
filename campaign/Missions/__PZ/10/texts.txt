@@ -1,0 +1,13 @@
+// Misja 10 - Przechwycenie Sygna³u
+
+$ PZ10_01
+- Wie¿a naprawiona! Nadaj sygna³ Naukowcem 15 sekund.
+
+$ PZ10_02
+- Sygna³ wys³any! Broñ wie¿y 10 minut! Alya s³yszy...
+
+$ PZ10_03
+- Mina postawiona. Zosta³o: %s.
+
+$ PZ10_WIEZA
+- Wie¿a zniszczona. Sygna³ umilk³.

@@ -1,0 +1,7 @@
+MISSION
+  MAP map.txt
+  TEXTS texts.txt
+  SOURCES sources.txt
+  CAMPAIGN 1 3
+  AUTOR PZJ
+END_OF_MISSION

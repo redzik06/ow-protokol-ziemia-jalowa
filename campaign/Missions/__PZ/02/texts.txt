@@ -1,0 +1,28 @@
+// Misja 02 - Droga przez Rdzê
+
+$ PZ02_01
+- Kanion Wiatru — jedyna droga. I jedyny powód, by tu wracaæ, to ropa.
+
+$ PZ02_02
+- To nie ropa. To krew bitwy. Ale pojadê i na tym.
+
+$ PZ02_03
+- Ha³as! Wataha Ma³poludów biegnie na strza³!
+
+$ PZ02_04
+- Zatankowano +30. Paliwo: %s%.
+
+$ PZ02_HINT_L
+- £atwy: wystarcz¹ 2 wraki, 3 patrole. Tankuj In¿ynierem 5 sekund przy wraku.
+
+$ PZ02_HINT_H
+- Trudny: 4 wraki, 7 patroli, spalanie x2. Ka¿dy postój to ryzyko.
+
+$ PZ02_HT
+- HT zniszczony. Kanion nie do przejœcia pieszo.
+
+$ PZ02_FUEL
+- Brak paliwa i wraków. Konwój stan¹³.
+
+$ PZ02_FAIL
+- Dru¿yna nie ¿yje w kanionie.

@@ -1,0 +1,25 @@
+// Misja 05 - Brama na Pó³noc
+
+$ PZ05_01
+- Jak wybuchnie za wczeœnie, to przynajmniej nie us³yszê narzekañ.
+
+$ PZ05_02
+- Przepraszam, Siergiej. Ale ty byœ nas zostawi³. Ja nie.
+
+$ PZ05_03
+- £adunek zcraftowany: %s/3.
+
+$ PZ05_04
+- Podk³adanie ³adunku... 10 sekund.
+
+$ PZ05_05
+- £adunek pod³o¿ony! Wycofaj siê!
+
+$ PZ05_06
+- Barykada zniszczona! Uciekaj HT na pó³noc!
+
+$ PZ05_07
+- Maya zginê³a przy podk³adaniu — w 14 nie bêdzie in¿yniera!
+
+$ PZ05_HT
+- HT zniszczony. Prze³êcz zamkniêta.

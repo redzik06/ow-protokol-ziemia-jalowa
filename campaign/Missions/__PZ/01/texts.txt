@@ -1,0 +1,25 @@
+// Misja 01 - Ostatnia Iskra
+
+$ PZ01_01
+- Alpha pad³a. Zosta³ HT, piêciu ludzi i klucz 17. Nie pytaj, gdzie reszta — tam, gdzie my bêdziemy za godzinê, jeœli nie ruszymy dupy.
+
+$ PZ01_02
+- Nie umieram. Tylko testujê grawitacjê.
+
+$ PZ01_03
+- Dziennik bazy: „Wszystko dzia³a. ¯y³a pod nami. Legion idzie.” — Rook mia³ racjê.
+
+$ PZ01_HINT_L
+- £atwy: masz 20 minut i 2 patrole. Poruszaj siê cicho. HT 36,36.
+
+$ PZ01_HINT_M
+- Poruszaj siê cicho. Ka¿dy strza³ to wataha Ma³poludów. HT 36,36.
+
+$ PZ01_HINT_H
+- Trudny: 10 minut, 4 patrole, HT 50% HP. Powodzenia.
+
+$ PZ01_TIMEOUT
+- Czas min¹³! Legion zamkn¹³ kanion.
+
+$ PZ01_FAIL
+- Dru¿yna nie ¿yje. Alpha milczy.

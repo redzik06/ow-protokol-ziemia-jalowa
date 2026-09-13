@@ -1,0 +1,16 @@
+// Misja 08 - Wzmocnienie Konwoju
+
+$ PZ08_01
+- Spawaj szybciej. Legion puka. I nie puka delikatnie.
+
+$ PZ08_02
+- Silnik syberytowy to bzdura. Daj ropê i m³otek, pojadê na Ksiê¿yc.
+
+$ PZ08_03
+- Warsztat: %s%.
+
+$ PZ08_04
+- Drugi pojazd gotowy! Konwój wzmocniony.
+
+$ PZ08_WARSZTAT
+- Warsztat zniszczony. Konwój bez drugiego pojazdu.

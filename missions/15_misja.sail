@@ -117,13 +117,13 @@ begin
     final_event := 1;
     if jest_farid = 1 and IsOK(un_humans[5]) and IsOK(un_alya) then
     begin
-        Hint('Farid → Alya: zdrada mentorki, oboje giną. Odblokowuje A.');
+        Hint('Farid -> Alya: zdrada mentorki, oboje giną. Odblokowuje A.');
         KillUnit(un_alya);
         KillUnit(un_humans[5]);
     end
     else if IsOK(un_alya) then
     begin
-        Hint('Elena → Alya: koniec Legionu.');
+        Hint('Elena -> Alya: koniec Legionu.');
         KillUnit(un_alya);
     end;
 end;

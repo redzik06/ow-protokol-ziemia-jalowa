@@ -149,7 +149,7 @@ begin
             YouLost('PZ01_TIMEOUT');
         end;
     end;
-    // Ktoś z drużyny strzela (celuje/atakuje) → hałas, max co 30s
+    // Ktoś z drużyny strzela (celuje/atakuje) -> hałas, max co 30s
     if halas_cd = 0 then
     begin
         if IsOK(un_humans[0]) and Attacks(un_humans[0]) <> 0 then HalasWataha(un_humans[0])

@@ -1,6 +1,6 @@
 ; 14_misja.sail — Bitwa w Kraterze
 ; Mapa: maps/03_akt_III/14_bitwa_w_kraterze.map — 128x128 crater, indywidualna
-; Vault: 03 Akt III - Protokół Eos/14 - Bitwa w Kraterze.md, 05 Fabuła/03 - Kto Kogo Odstrzeli.md (Yuri → Miron)
+; Vault: 03 Akt III - Protokół Eos/14 - Bitwa w Kraterze.md, 05 Fabuła/03 - Kto Kogo Odstrzeli.md (Yuri -> Miron)
 ; Zasada: nowa historia nie związana z ori, postapo, 3 poziomy równocześnie, poprawna pisownia PL, podział sił
 
 int silosyRozbrojone = 0;
@@ -114,14 +114,14 @@ begin
     if IsOK(un_humans[3]) and IsInArea(un_humans[3], areaSilos) then
     begin
         rozbroj_prog[idx] := rozbroj_prog[idx] + 1;
-        // Miron przy silosie S: pierwsze podejście = konfrontacja Yuri → Miron
+        // Miron przy silosie S: pierwsze podejście = konfrontacja Yuri -> Miron
         if idx = 2 and miron_event = 0 then
         begin
             miron_event := 1;
             Hint('Miron Karpov przy silosie! Yuri musi go zastrzelić!');
             ForceSay(un_humans[1], 'PZ14_02'); // Yuri: "Podpisałem. Teraz skreślam."
             if IsOK(un_miron) then KillUnit(un_miron);
-            Hint('Yuri → Miron Karpov: strzał. Uczeń zabił mistrza. Kod Gamma zdobyty.');
+            Hint('Yuri -> Miron Karpov: strzał. Uczeń zabił mistrza. Kod Gamma zdobyty.');
             goal_state[2] := 2;
         end;
         if rozbroj_prog[idx] >= rozbroj_need then

@@ -1,0 +1,19 @@
+// Misja 04 - Cmentarzysko Czo³gów
+
+$ PZ04_01
+- Cicho. Ka¿dy strza³ to zaproszenie dla Ma³poludów. A nie jesteœmy gospodarzami.
+
+$ PZ04_02
+- Ur.
+
+$ PZ04_03
+- Zgadzam siê.
+
+$ PZ04_04
+- Demonta¿ w toku... %ss.
+
+$ PZ04_05
+- Czêœæ zdemontowana! %s/4.
+
+$ PZ04_06
+- Ha³as! Wataha %s Ma³poludów biegnie!

@@ -108,7 +108,7 @@ end;
 
 Every 1$0 do
 begin
-    // Maya przy wraku → demontaż (auto, raz per wrak)
+    // Maya przy wraku -> demontaż (auto, raz per wrak)
     if demontaz_busy = 0 and IsOK(un_humans[3]) then
     begin
         if wrak_ok[0] = 0 and IsInArea(un_humans[3], area_wrak1) then Demontaz(0)
@@ -116,7 +116,7 @@ begin
         else if wrak_ok[2] = 0 and IsInArea(un_humans[3], area_wrak3) then Demontaz(2)
         else if wrak_ok[3] = 0 and IsInArea(un_humans[3], area_wrak4) then Demontaz(3);
     end;
-    // Hałas: strzał drużyny (Attacks) → wataha, max co 30s
+    // Hałas: strzał drużyny (Attacks) -> wataha, max co 30s
     if halas_cd > 0 then halas_cd := halas_cd - 1;
     if halas_cd = 0 then
     begin

@@ -1,0 +1,19 @@
+// Misja 12 - Czerwony Zmierzch
+
+$ PZ12_01
+- Ty zdradzi³eœ Legion, ja zdradzi³em rozkazy. Jesteœmy kwita. Teraz spierdalaj, zanim zmieniê zdanie.
+
+$ PZ12_02
+- Chcesz goniæ dowódcê po lodzie? To nie poœcig, to samobójstwo na ³y¿wach.
+
+$ PZ12_03
+- Karim zgin¹³ — tracisz Mastodona Bura na zawsze!
+
+$ PZ12_04
+- Szturm: Viktor niszczy dowódcê! Karim ranny, ale ¿yje.
+
+$ PZ12_05
+- Negocjacje: Karim zabija dowódcê, Viktor ginie os³aniaj¹c!
+
+$ PZ12_POJAZDY
+- Stracono konwój na lodzie.

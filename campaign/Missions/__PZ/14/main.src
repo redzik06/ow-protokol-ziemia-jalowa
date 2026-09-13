@@ -1,0 +1,194 @@
+; 14_misja.sail — Bitwa w Kraterze
+; Mapa: maps/03_akt_III/14_bitwa_w_kraterze.map — 128x128 crater, indywidualna
+; Vault: 03 Akt III - Protokó³ Eos/14 - Bitwa w Kraterze.md, 05 Fabu³a/03 - Kto Kogo Odstrzeli.md (Yuri -> Miron)
+; Zasada: nowa historia nie zwi¹zana z ori, postapo, 3 poziomy równoczeœnie, poprawna pisownia PL, podzia³ si³
+
+int silosyRozbrojone = 0;
+int rozbroj_prog[3];
+int rozbroj_need = 15; // sekundy: 10/15/20 (30 bez Mayi na T)
+int miron_event = 0;
+int chen_event = 0;
+
+export un_humans[6];
+export un_silos[3];
+export un_behemoth;
+export un_miron;
+export un_chen;
+
+int goal_state[3]; // 0=off 1=aktywny 2=done 3=fail
+
+Starting
+begin
+    // cel 0: ROZBRAJ_3_SILOSY // NW/NE/S
+    // cel 1: ODEPRZYJ_FALE
+    // cel 2: YURI_VS_MIRON
+    goal_state[0] := 1; goal_state[1] := 1;
+
+    // Dru¿yna 5 + Branch
+    uc_side := 1; uc_nation := nation_american; uc_x := 64; uc_y := 100;
+    hc_name := 'Elena Varga'; hc_class := class_mechanic; hc_skills := [2,2,5,1];
+    hc_gallery := 1; hc_face_number := 1;
+    un_humans[0] := CreateHuman;
+    uc_x := 65; hc_name := 'Yuri Kamarov'; hc_class := class_scientistic; hc_skills := [1,1,2,5];
+    hc_gallery := 1; hc_face_number := 2;
+    un_humans[1] := CreateHuman;
+    uc_x := 66; hc_name := 'Viktor Drachev'; hc_class := class_soldier; hc_skills := [5,1,2,1];
+    hc_gallery := 1; hc_face_number := 3;
+    un_humans[2] := CreateHuman;
+    uc_x := 64; uc_y := 101; hc_name := 'Maya Torres'; hc_class := class_engineer; hc_skills := [2,5,3,2];
+    hc_gallery := 1; hc_face_number := 4;
+    un_humans[3] := CreateHuman;
+    uc_x := 65; uc_y := 101; hc_name := 'Karim Al-Rashid'; hc_class := class_desert_warior; hc_skills := [5,1,1,1];
+    hc_gallery := 1; hc_face_number := 5;
+    un_humans[4] := CreateHuman;
+    // Branch z 06 (TestVariable) — domyœlnie Wiktor
+    if TestVariable('rekrut_farid') then
+    begin
+        uc_x := 66; uc_y := 101; hc_name := 'Farid Al-Hadi'; hc_class := class_scientistic;
+        hc_gallery := 1; hc_face_number := 7;
+        un_humans[5] := CreateHuman;
+    end
+    else
+    begin
+        uc_x := 66; uc_y := 101; hc_name := 'Wiktor Volkov'; hc_class := class_mechanic;
+        hc_gallery := 1; hc_face_number := 6;
+        un_humans[5] := CreateHuman;
+    end;
+
+    // 3 silosy-bunkry strony 2 z rakietami — pozycje NW 20,20 NE 100,20 S 64,90
+    uc_side := 2; bc_type := b_bunker;
+    uc_x := 20; uc_y := 20; un_silos[0] := CreateBuilding;
+    uc_x := 100; uc_y := 20; un_silos[1] := CreateBuilding;
+    uc_x := 64; uc_y := 90; un_silos[2] := CreateBuilding;
+    // Miron Karpov przy silosie S (twarz 9), Chen przy NE (twarz 14)
+    uc_side := 2; uc_nation := nation_russian; uc_x := 64; uc_y := 88;
+    hc_name := 'Miron Karpov'; hc_class := class_soldier;
+    hc_gallery := 1; hc_face_number := 9;
+    un_miron := CreateHuman;
+    uc_x := 100; uc_y := 22; hc_name := 'Chen'; hc_class := class_soldier;
+    hc_gallery := 1; hc_face_number := 14;
+    un_chen := CreateHuman;
+
+    // Behemoth — mini-boss Mirona (tylko Œredni/Trudny)
+    if difficulty <> 0 then
+    begin
+        uc_side := 2; uc_nation := nation_russian; vc_chassis := ru_heavy_tracked; // Behemoth jako heavy
+        vc_engine := engine_combustion; vc_control := control_manual; vc_weapon := us_heavy_gun;
+        uc_x := 64; uc_y := 64;
+        un_behemoth := CreateVehicle;
+        if difficulty = 1 then SetLives([un_behemoth], 800)
+        else SetLives([un_behemoth], 1200);
+    end;
+
+    // Skalowanie trudnoœci¹ — czas rozbrajania, fale
+    if difficulty = 0 then // ³atwy — rozbrajanie 10s, fale 4 co 90s
+    begin
+        rozbroj_need := 10;
+        Hint('£atwy: rozbrajanie 10s, fale 4 co 90s. Mo¿esz iœæ jedn¹ grup¹.');
+    end
+    else if difficulty = 1 then // œredni — 15s, fale 6 co 45s, podzia³ konieczny
+    begin
+        rozbroj_need := 15;
+        Hint('Œredni: 15s, fale 6 co 45s, Behemoth z rakietami. Podzia³ na 2 grupy.');
+    end
+    else // trudny — 20s (30s jeœli Maya martwa), fale 8 co 30s
+    begin
+        rozbroj_need := 20;
+        // Jeœli Maya martwa w 05 — piek³o
+        if not IsOK(un_humans[3]) then
+        begin
+            rozbroj_need := 30;
+            Hint('Trudny: Maya martwa w 05 — rozbrajanie 30s! Piek³o. Fale 8 co 30s.');
+        end
+        else Hint('Trudny: 20s, fale 8 co 30s, Behemoth +2 HT. Sprint + podzia³.');
+    end;
+
+    ForceSay(un_humans[1], 'PZ14_01'); // Yuri: "Podpisa³em..."
+    CenterOnXY(64,100);
+end;
+
+// Rozbrajanie — Maya w strefie silosu (area_silos_1..3), postêp co 1s
+export function RozbrojPostep(idx, areaSilos);
+begin
+    if silosyRozbrojone >= 3 then Exit;
+    if IsOK(un_humans[3]) and IsInArea(un_humans[3], areaSilos) then
+    begin
+        rozbroj_prog[idx] := rozbroj_prog[idx] + 1;
+        // Miron przy silosie S: pierwsze podejœcie = konfrontacja Yuri -> Miron
+        if idx = 2 and miron_event = 0 then
+        begin
+            miron_event := 1;
+            Hint('Miron Karpov przy silosie! Yuri musi go zastrzeliæ!');
+            ForceSay(un_humans[1], 'PZ14_02'); // Yuri: "Podpisa³em. Teraz skreœlam."
+            if IsOK(un_miron) then KillUnit(un_miron);
+            Hint('Yuri -> Miron Karpov: strza³. Uczeñ zabi³ mistrza. Kod Gamma zdobyty.');
+            goal_state[2] := 2;
+        end;
+        if rozbroj_prog[idx] >= rozbroj_need then
+        begin
+            SetSide(un_silos[idx], 1);
+            silosyRozbrojone := silosyRozbrojone + 1;
+            Hint('Silos rozbrojony: ' + silosyRozbrojone + '/3');
+            if silosyRozbrojone >= 3 then
+            begin
+                goal_state[0] := 2;
+                SaveCharacters([un_humans[0], un_humans[1], un_humans[2], un_humans[3], un_humans[4]], 'pz_team');
+                YouWin;
+            end;
+        end;
+    end;
+end;
+
+Every 1$0 do
+begin
+    RozbrojPostep(0, area_silos_1);
+    RozbrojPostep(1, area_silos_2);
+    RozbrojPostep(2, area_silos_3);
+    // Chen Beta przy NE: Farid lub Yuri w strefie = dezercja (sekret, raz)
+    if chen_event = 0 and IsOK(un_chen) then
+    begin
+        if (IsOK(un_humans[5]) and IsInArea(un_humans[5], area_silos_2)) or IsInArea(un_humans[1], area_silos_2) then DialogChen;
+    end;
+end;
+
+// Fale Kultu — skalowane
+Every 90$0 do
+begin
+    if difficulty = 0 and goal_state[0] <> 2 then SpawnWave(4);
+end;
+Every 45$0 do
+begin
+    if difficulty = 1 and goal_state[0] <> 2 then SpawnWave(6);
+end;
+Every 30$0 do
+begin
+    if difficulty = 2 and goal_state[0] <> 2 then SpawnWave(8);
+end;
+
+export function SpawnWave(count);
+begin
+    uc_side := 2; uc_nation := nation_russian; hc_class := class_soldier;
+    for i:=1 to count do
+    begin
+        uc_x := 64 + Rand(-60,60); uc_y := 64 + Rand(-60,60); CreateHuman;
+    end;
+end;
+
+// Chen Beta — chce zdezerterowaæ, Farid/Yuri go przekonuje (sekret, raz)
+export function DialogChen;
+begin
+    chen_event := 1;
+    Hint('Chen: "Mam kod Beta. Mam doœæ. Bierzcie i puœæcie mnie." — oddaje bez walki.');
+    SetSide(un_chen, 1);
+    silosyRozbrojone := silosyRozbrojone + 1; // skrót
+    Hint('Silos rozbrojony: ' + silosyRozbrojone + '/3');
+    if silosyRozbrojone >= 3 then
+    begin
+        goal_state[0] := 2;
+        SaveCharacters([un_humans[0], un_humans[1], un_humans[2], un_humans[3], un_humans[4]], 'pz_team');
+        YouWin;
+    end;
+end;
+
+// Postapo: 3 silosy rozrzucone NW/NE/S — dlatego podzia³ si³ ma sens (audyt 14)
+// 3 poziomy równoczeœnie — obligatoryjnie, solucja: docs/solucje/14 - Solucja - Bitwa w Kraterze.pdf

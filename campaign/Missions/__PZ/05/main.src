@@ -1,0 +1,149 @@
+; 05_misja.sail — Brama na Pó³noc
+; Mapa: maps/01_akt_I/05_brama_na_polnoc.map — 64x96 mountain, indywidualna
+; Vault: 01 Akt I - Rozpad i Ucieczka/05 - Brama na Pó³noc.md, 05 Fabu³a/03 - Kto Kogo Odstrzeli.md
+; Zasada: nowa historia nie zwi¹zana z ori, postapo, 3 poziomy równoczeœnie, poprawna pisownia PL
+
+int ladunki = 0;
+int material_A = 0;
+int material_B = 0;
+int mat_taken[3];
+int craft_cd = 0;
+int place_done = 0;
+
+export un_humans[6];
+export un_transporterHT;
+
+int goal_state[3]; // 0=off 1=aktywny 2=done 3=fail
+
+Starting
+begin
+    // cel 0: ZBIERZ_3_LADUNKI
+    // cel 1: WYSADZ_BARYKADE
+    // cel 2: OBRONA_I_UCIECZKA
+    goal_state[0] := 1;
+
+    // Dru¿yna 5 + HT
+    uc_side := 1; uc_nation := nation_american; uc_x := 32; uc_y := 85;
+    hc_name := 'Elena Varga'; hc_class := class_mechanic; hc_skills := [2,2,5,1];
+    hc_gallery := 1; hc_face_number := 1;
+    un_humans[0] := CreateHuman;
+    uc_x := 33; hc_name := 'Yuri Kamarov'; hc_class := class_scientistic; hc_skills := [1,1,2,5];
+    hc_gallery := 1; hc_face_number := 2;
+    un_humans[1] := CreateHuman;
+    uc_x := 34; hc_name := 'Viktor Drachev'; hc_class := class_soldier; hc_skills := [5,1,2,1];
+    hc_gallery := 1; hc_face_number := 3;
+    un_humans[2] := CreateHuman;
+    uc_x := 32; uc_y := 86; hc_name := 'Maya Torres'; hc_class := class_engineer; hc_skills := [2,5,3,2];
+    hc_gallery := 1; hc_face_number := 4;
+    un_humans[3] := CreateHuman;
+    uc_x := 33; uc_y := 86; hc_name := 'Karim Al-Rashid'; hc_class := class_desert_warior; hc_skills := [5,1,1,1];
+    hc_gallery := 1; hc_face_number := 5;
+    un_humans[4] := CreateHuman;
+
+    uc_side := 1; vc_chassis := us_heavy_tracked; vc_engine := engine_combustion; vc_control := control_manual; vc_weapon := us_heavy_gun;
+    uc_x := 32; uc_y := 84;
+    un_transporterHT := CreateVehicle;
+    SetLives([un_transporterHT], 80);
+
+    // Skalowanie trudnoœci¹ — z³o¿a na mapie (area_mat1..3), fale poœcigu
+    // Ammo w OW jest nielimitowane na podstawow¹ broñ — trudnoœæ robi¹ fale i czas
+    if difficulty = 0 then // ³atwy
+    begin
+        Hint('£atwy: 3 z³o¿a blisko, fala 4. Maya ma czas.');
+    end
+    else if difficulty = 1 then // œredni
+    begin
+        Hint('Œredni: materia³y rozrzucone, fala 6. Planuj miny.');
+    end
+    else // trudny
+    begin
+        // fala 8 + Behemoth cieñ
+        Hint('Trudny: z³o¿a daleko i strze¿one, fala 8 + Behemoth.');
+    end;
+
+    ForceSay(un_humans[3], 'PZ05_01'); // Maya: "Jak wybuchnie za wczeœnie..."
+    ForceSay(un_humans[2], 'PZ05_02'); // Viktor: "Przepraszam, Siergiej. Ale ty byœ nas zostawi³."
+    CenterOnXY(32,85);
+end;
+
+// Materia³y: Maya zbiera w z³o¿ach (area_mat1..3 na mapie), raz ka¿de
+Every 1$0 do
+begin
+    if craft_cd > 0 then craft_cd := craft_cd - 1;
+    if IsOK(un_humans[3]) and craft_cd = 0 then
+    begin
+        if mat_taken[0] = 0 and IsInArea(un_humans[3], area_mat1) then begin mat_taken[0] := 1; material_A := material_A + 1; material_B := material_B + 1; Hint('Materia³y +1.'); craft_cd := 3; end
+        else if mat_taken[1] = 0 and IsInArea(un_humans[3], area_mat2) then begin mat_taken[1] := 1; material_A := material_A + 1; material_B := material_B + 1; Hint('Materia³y +1.'); craft_cd := 3; end
+        else if mat_taken[2] = 0 and IsInArea(un_humans[3], area_mat3) then begin mat_taken[2] := 1; material_A := material_A + 1; material_B := material_B + 1; Hint('Materia³y +1.'); craft_cd := 3; end;
+        // Craft w warsztacie (area_warsztat): 1A+1B = 1 ³adunek
+        if IsInArea(un_humans[3], area_warsztat) and material_A > 0 and material_B > 0 and ladunki < 3 then
+        begin
+            material_A := material_A - 1; material_B := material_B - 1;
+            ladunki := ladunki + 1;
+            Hint('£adunek zcraftowany: ' + ladunki + '/3');
+            craft_cd := 5;
+            if ladunki >= 3 then goal_state[0] := 2;
+        end;
+        // Pod³o¿enie przy barykadzie (areaBarykada): ³adunek + Maya -> detonacja
+        if place_done = 0 and ladunki > 0 and IsInArea(un_humans[3], areaBarykada) then PodlozLadunek;
+    end;
+end;
+
+// Pod³o¿enie przy barykadzie — ³adunek czasowy 32,20, wybuch niszczy mur (silnik)
+export function PodlozLadunek;
+begin
+    place_done := 1;
+    Hint('Podk³adanie ³adunku... 10s');
+    Wait(10$0);
+    ladunki := ladunki - 1;
+    AddComPlaceDelayedCharge([un_humans[3]], 32, 20, 0);
+    Hint('£adunek pod³o¿ony! Wycofaj siê!');
+    Wait(10$0); // lont
+    goal_state[1] := 2;
+    goal_state[2] := 1;
+    // Poœcig Legionu — skalowany
+    if difficulty = 0 then SpawnPursuit(4)
+    else if difficulty = 1 then SpawnPursuit(6)
+    else SpawnPursuit(8);
+    Hint('Barykada zniszczona! Uciekaj HT na pó³noc (32,5)!');
+end;
+
+export function SpawnPursuit(count);
+begin
+    uc_side := 2; uc_nation := nation_arabian; hc_class := class_soldier;
+    for i := 1 to count do
+    begin
+        uc_x := 32 + Rand(-10,10); uc_y := 70; CreateHuman;
+    end;
+    // Trudny: dodatkowo Behemoth cieñ
+    if difficulty = 2 then
+    begin
+        uc_side := 2; vc_chassis := ru_heavy_tracked; vc_engine := engine_combustion; vc_weapon := us_heavy_gun;
+        uc_x := 32; uc_y := 65; CreateVehicle;
+    end;
+end;
+
+// Meta pó³noc
+Every 0$5 do
+begin
+    if IsOK(un_transporterHT) and IsInArea(un_transporterHT, area_escape_polnoc) then
+    begin
+        if FilterUnitsInArea(area_escape_polnoc, [f_side, 1]) <> [] then
+        begin
+            goal_state[2] := 2;
+            SaveCharacters([un_humans[0], un_humans[1], un_humans[2], un_humans[3], un_humans[4]], 'pz_team');
+            YouWin;
+        end;
+    end;
+    if not IsOK(un_transporterHT) then YouLost('PZ05_HT');
+end;
+
+// Jeœli Maya zginie — sekret: brak in¿yniera w 14 piek³o (vault 03 - Kto Kogo Odstrzeli)
+export function UnitDestroyed(un);
+begin
+    if un = un_humans[3] then // Maya
+        Hint('Maya zginê³a przy podk³adaniu — w 14 nie bêdzie in¿yniera! (sekret)');
+end;
+
+// Koniec Aktu I — przejœcie do 06 Wolne Targowisko hub
+// 3 poziomy równoczeœnie — obligatoryjnie, solucja: docs/solucje/05 - Solucja - Brama na Pó³noc.pdf

@@ -163,6 +163,6 @@ begin
     end;
 end;
 
-// Poprawka sensu 09→11: sublimacja Syberytu odsłania EON-2 pod lodem — link do 11
+// Poprawka sensu 09->11: sublimacja Syberytu odsłania EON-2 pod lodem — link do 11
 // Postapo: nałożone pola 3 EON-ów, stałe typy, nie RNG — sens z audytu
 // 3 poziomy równocześnie — obligatoryjnie, solucja: docs/solucje/09 - Solucja - Anomalia Łza.pdf (stałe, nie losowe)

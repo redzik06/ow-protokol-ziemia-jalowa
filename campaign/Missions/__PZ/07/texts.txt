@@ -1,0 +1,16 @@
+// Misja 07 - Czysty Tlen
+
+$ PZ07_01
+- Pr¹d jest. Dopóki ktoœ nie kichnie.
+
+$ PZ07_02
+- Wie¿yczka przejêta!
+
+$ PZ07_03
+- Generator pad³! Wie¿yczki offline!
+
+$ PZ07_04
+- Woda pod zmarzlin¹ — jedyna czysta. Dlatego wszyscy o ni¹ walcz¹.
+
+$ PZ07_GEN
+- Generator zniszczony. Przepompownia offline.

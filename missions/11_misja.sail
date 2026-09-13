@@ -104,7 +104,7 @@ begin
     end;
 end;
 
-// Alarm na Trudnym: strzał drużyny (Attacks) → 2 dodatkowych, max co 60s
+// Alarm na Trudnym: strzał drużyny (Attacks) -> 2 dodatkowych, max co 60s
 Every 1$0 do
 begin
     if halas_cd > 0 then halas_cd := halas_cd - 1;

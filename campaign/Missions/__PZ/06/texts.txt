@@ -1,0 +1,22 @@
+// Misja 06 - Wolne Targowisko
+
+$ PZ06_01
+- Mam wszystko. Ropê, filtry, nadziejê. Nadzieja najdro¿sza. I najbardziej przeterminowana.
+
+$ PZ06_02
+- Mogê was zabiæ, mogê was kupiæ. To drugie dro¿sze. Wybierajcie.
+
+$ PZ06_03
+- Zosta³em, bo Elena potrzebuje m³otka. A wy potrzebujecie cudu. M³otek mam.
+
+$ PZ06_04
+- Leczê tych, których jutro postrzelicie. Stabilne zatrudnienie.
+
+$ PZ06_05
+- Tu siê nie strzela, tu siê handluje. Poza Enklaw¹ — róbta co chceta. Tu crates rz¹dz¹, nie flagi.
+
+$ PZ06_06
+- Wybrano: Wiktor Volkov (Sojusz, -20% paliwo). Alya wrogo od 12.
+
+$ PZ06_07
+- Wybrano: Farid Al-Hadi (Legion, medyk, Alya neutral do 12).

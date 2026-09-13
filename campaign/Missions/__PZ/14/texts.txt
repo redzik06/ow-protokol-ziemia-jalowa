@@ -1,0 +1,16 @@
+// Misja 14 - Bitwa w Kraterze
+
+$ PZ14_01
+- Podpisa³eœ, Jurij? Teraz patrz, jak dzia³a d³ugopis.
+
+$ PZ14_02
+- Podpisa³em. Teraz skreœlam.
+
+$ PZ14_03
+- Silos rozbrojony: %s/3.
+
+$ PZ14_04
+- Mam kod Beta. Mam doœæ. Bierzcie i puœæcie mnie.
+
+$ PZ14_05
+- Yuri -> Miron Karpov: strza³. Uczeñ zabi³ mistrza.

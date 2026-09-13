@@ -1,0 +1,22 @@
+// Misja 03 - Pierwsza Pomoc
+
+$ PZ03_01
+- Filtr? Mam. Dzia³a? Te¿ mam. Oba nie naraz — wybieraj.
+
+$ PZ03_02
+- Miron Karpov przez radio: „Drachev, wróæ do Kirowa albo zgiñ jako dezerter.”
+
+$ PZ03_03
+- Mia³eœ wróciæ. Ja wybra³em Sojusz.
+
+$ PZ03_04
+- Oddychaj p³ytko. Jak umrzesz, to przynajmniej czysto.
+
+$ PZ03_05
+- 12 minut do zamieci. 12 minut do bycia py³em. Romantyczne.
+
+$ PZ03_06
+- Dekontaminacja: %s +20 HP. Filtry: %s.
+
+$ PZ03_FAIL
+- Posterunek pad³. Choroba wygra³a.

@@ -84,7 +84,7 @@ begin
             craft_cd := 5;
             if ladunki >= 3 then goal_state[0] := 2;
         end;
-        // Podłożenie przy barykadzie (areaBarykada): ładunek + Maya → detonacja
+        // Podłożenie przy barykadzie (areaBarykada): ładunek + Maya -> detonacja
         if place_done = 0 and ladunki > 0 and IsInArea(un_humans[3], areaBarykada) then PodlozLadunek;
     end;
 end;

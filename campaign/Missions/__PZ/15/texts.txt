@@ -1,0 +1,28 @@
+// Misja 15 - Ostatni Œwit
+
+$ PZ15_01
+- EON-2 jest mój. By³ mój, zanim wy nauczyliœcie siê go pisaæ.
+
+$ PZ15_02
+- To go sobie zabierz. Tylko najpierw przejdŸ przeze mnie. I przez mój klucz 17.
+
+$ PZ15_03
+- Uczy³aœ mnie leczyæ. Teraz uczê ciê umieraæ. Symetria.
+
+$ PZ15_04
+- Uruchamianie filtra... %ss.
+
+$ PZ15_05
+- Zakoñczenie A: Sojusz — filtr stabilny, Motherlode ocalony, osada Sojusz+Apemeni.
+
+$ PZ15_06
+- Zakoñczenie B: Legion — EON-2 jako twierdza, handel Syberytem.
+
+$ PZ15_07
+- Zakoñczenie C: Ziemia Ja³owa — filtr 20%, niecka ja³owa, epoka kamienia.
+
+$ PZ15_08
+- Filtr zniszczony! Ziemia Ja³owa!
+
+$ PZ15_FILTR
+- Filtr zniszczony! Ziemia Ja³owa!

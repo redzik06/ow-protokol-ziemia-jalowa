@@ -103,7 +103,7 @@ PZ14_01 = "Podpisałeś, Jurij? Teraz patrz, jak działa długopis."
 PZ14_02 = "Podpisałem. Teraz skreślam."
 PZ14_03 = "Silos rozbrojony: %s/3."
 PZ14_04 = "Mam kod Beta. Mam dość. Bierzcie i puśćcie mnie."
-PZ14_05 = "Yuri → Miron Karpov: strzał. Uczeń zabił mistrza."
+PZ14_05 = "Yuri -> Miron Karpov: strzał. Uczeń zabił mistrza."
 
 ; === MISJA 15 — Ostatni Świt ===
 PZ15_01 = "EON-2 jest mój. Był mój, zanim wy nauczyliście się go pisać."

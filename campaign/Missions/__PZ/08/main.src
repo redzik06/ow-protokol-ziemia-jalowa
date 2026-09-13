@@ -1,0 +1,174 @@
+; 08_misja.sail — Wzmocnienie Konwoju
+; Mapa: maps/02_akt_II/08_wzmocnienie_konwoju.map — 80x64 industrial, indywidualna
+; Vault: 02 Akt II - Szara Pustynia/08 - Wzmocnienie Konwoju.md
+; Zasada: nowa historia nie zwi¹zana z ori, postapo, 3 poziomy równoczeœnie, poprawna pisownia PL
+
+int progress = 0;
+int progress_max = 100;
+int czesci = 0;
+int czesc_taken[4];
+
+export un_humans[6];
+export un_warsztat;
+
+int goal_state[3]; // 0=off 1=aktywny 2=done 3=fail
+
+Starting
+begin
+    // cel 0: ZBIERZ_4_CZESCI
+    // cel 1: ZLOZ_POJAZD
+    // cel 2: PRZETRWAJ_FALE
+    goal_state[0] := 1;
+
+    // Dru¿yna 5 + Branch
+    uc_side := 1; uc_nation := nation_american; uc_x := 40; uc_y := 50;
+    hc_name := 'Elena Varga'; hc_class := class_mechanic; hc_skills := [2,2,5,1];
+    hc_gallery := 1; hc_face_number := 1;
+    un_humans[0] := CreateHuman;
+    uc_x := 41; hc_name := 'Yuri Kamarov'; hc_class := class_scientistic; hc_skills := [1,1,2,5];
+    hc_gallery := 1; hc_face_number := 2;
+    un_humans[1] := CreateHuman;
+    uc_x := 42; hc_name := 'Viktor Drachev'; hc_class := class_soldier; hc_skills := [5,1,2,1];
+    hc_gallery := 1; hc_face_number := 3;
+    un_humans[2] := CreateHuman;
+    uc_x := 40; uc_y := 51; hc_name := 'Maya Torres'; hc_class := class_engineer; hc_skills := [2,5,3,2];
+    hc_gallery := 1; hc_face_number := 4;
+    un_humans[3] := CreateHuman;
+    uc_x := 41; uc_y := 51; hc_name := 'Karim Al-Rashid'; hc_class := class_desert_warior; hc_skills := [5,1,1,1];
+    hc_gallery := 1; hc_face_number := 5;
+    un_humans[4] := CreateHuman;
+    // Branch z 06 (TestVariable) — domyœlnie Wiktor
+    if TestVariable('rekrut_farid') then
+    begin
+        uc_x := 42; uc_y := 51; hc_name := 'Farid Al-Hadi'; hc_class := class_scientistic;
+        hc_gallery := 1; hc_face_number := 7;
+        un_humans[5] := CreateHuman;
+    end
+    else
+    begin
+        uc_x := 42; uc_y := 51; hc_name := 'Wiktor Volkov'; hc_class := class_mechanic;
+        hc_gallery := 1; hc_face_number := 6;
+        un_humans[5] := CreateHuman;
+    end;
+
+    // Warsztat jako budynek b_factory
+    uc_side := 1; bc_type := b_factory; uc_x := 40; uc_y := 32;
+    un_warsztat := CreateBuilding;
+
+    // 4 czêœci — strefy area_czesc1..4 na mapie: silnik, g¹sienice, pancerz, wie¿yczka
+    // Pozycje: 10,20 70,20 10,50 70,50 — na Trudnym 1 strze¿ona
+
+    // Skalowanie trudnoœci¹ — próg progressu, fale, Wiktor buff
+    if difficulty = 0 then // ³atwy — próg 100 (+2/s), fale 4 co 120s, czêœci blisko
+    begin
+        progress_max := 100;
+        Hint('£atwy: czêœci blisko, progress +2/s, fale 4 co 120s. Wiktor +1/s.');
+    end
+    else if difficulty = 1 then // œredni — próg 100 (+1/s), fale 6 co 60s
+    begin
+        progress_max := 100;
+        Hint('Œredni: czêœci rozrzucone, +1/s, fale 6 co 60s. W warsztacie bezpieczniej.');
+    end
+    else // trudny — próg 140 (+1/s, wolniej), fale 8 co 45s, 1 czêœæ strze¿ona
+    begin
+        progress_max := 140;
+        Hint('Trudny: daleko + strze¿ona, próg 140, fale 8 co 45s. Warsztat = pu³apka.');
+    end;
+
+    ForceSay(un_humans[3], 'PZ08_01'); // Maya: "Spawaj szybciej..."
+    CenterOnXY(40,32);
+end;
+
+// Czêœci 4 (area_czesc1..4 na mapie) — wejœcie cz³owieka = czêœæ, raz ka¿da
+Every 1$0 do
+begin
+    if czesc_taken[0] = 0 and FilterUnitsInArea(area_czesc1, [f_side, 1]) <> [] then begin czesc_taken[0] := 1; czesci := czesci + 1; Hint('Czêœæ +1/4.'); end;
+    if czesc_taken[1] = 0 and FilterUnitsInArea(area_czesc2, [f_side, 1]) <> [] then begin czesc_taken[1] := 1; czesci := czesci + 1; Hint('Czêœæ +1/4.'); end;
+    if czesc_taken[2] = 0 and FilterUnitsInArea(area_czesc3, [f_side, 1]) <> [] then begin czesc_taken[2] := 1; czesci := czesci + 1; Hint('Czêœæ +1/4.'); end;
+    if czesc_taken[3] = 0 and FilterUnitsInArea(area_czesc4, [f_side, 1]) <> [] then begin czesc_taken[3] := 1; czesci := czesci + 1; Hint('Czêœæ +1/4.'); end;
+    if czesci >= 4 then goal_state[0] := 2;
+end;
+
+// Progress craft — tylko gdy Mechanik/In¿ynier (Elena/Maya/Wiktor) w warsztacie
+function WarsztatObsluga: Boolean;
+begin
+    Result := (IsOK(un_humans[0]) and IsInArea(un_humans[0], area_warsztat))
+        or (IsOK(un_humans[3]) and IsInArea(un_humans[3], area_warsztat))
+        or (IsOK(un_humans[5]) and IsInArea(un_humans[5], area_warsztat));
+end;
+
+Every 1$0 do
+begin
+    if goal_state[1] <> 2 and WarsztatObsluga and czesci >= 4 then
+    begin
+        if difficulty = 0 then progress := progress + 2
+        else progress := progress + 1;
+        if IsOK(un_humans[5]) and IsInArea(un_humans[5], area_warsztat) then progress := progress + 1; // Wiktor pomaga
+        if progress > progress_max then progress := progress_max;
+        Hint('Warsztat: ' + progress + '%');
+        if progress >= progress_max then
+        begin
+            // Stwórz 2. pojazd
+            uc_side := 1; vc_chassis := us_heavy_tracked; vc_engine := engine_combustion; vc_control := control_manual; vc_weapon := us_heavy_gun;
+            uc_x := 40; uc_y := 35;
+            CreateVehicle;
+            goal_state[1] := 2;
+            Hint('2. pojazd gotowy! Konwój wzmocniony.');
+            goal_state[2] := 1;
+            // Fala obrony 60s po z³o¿eniu — potem zwyciêstwo
+            Wait(60$0);
+            if IsOK(un_warsztat) then
+            begin
+                goal_state[2] := 2;
+                SaveCharacters([un_humans[0], un_humans[1], un_humans[2], un_humans[3], un_humans[4]], 'pz_team');
+                YouWin;
+            end
+            else
+            begin
+                goal_state[2] := 3;
+                YouLost('PZ08_WARSZTAT');
+            end;
+        end;
+    end;
+end;
+
+// Fale Legionu — skalowane
+Every 60$0 do
+begin
+    if difficulty = 1 then
+    begin
+        // 6 wrogów co 60s
+        SpawnWave(6);
+    end;
+end;
+
+Every 45$0 do
+begin
+    if difficulty = 2 then SpawnWave(8);
+end;
+
+Every 120$0 do
+begin
+    if difficulty = 0 then SpawnWave(4);
+end;
+
+export function SpawnWave(count);
+begin
+    uc_side := 2; uc_nation := nation_arabian; hc_class := class_soldier;
+    for i := 1 to count do
+    begin
+        uc_x := 10 + Rand(0,60); uc_y := 5; CreateHuman;
+    end;
+end;
+
+// Warsztat zniszczony przed koñcem = pora¿ka
+Every 1$0 do
+begin
+    if not IsOK(un_warsztat) and goal_state[1] <> 2 then
+    begin
+        goal_state[2] := 3;
+        YouLost('PZ08_WARSZTAT');
+    end;
+end;
+// Postapo: hala bez pr¹du, suwnica rêcznie, czêœci z wraków — utrzymane
+// 3 poziomy równoczeœnie — obligatoryjnie, solucja: docs/solucje/08 - Solucja - Wzmocnienie Konwoju.pdf
