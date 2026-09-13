@@ -89,8 +89,12 @@ begin
         Hint('Trudny: 30s, bardzo mocne, hack 4 dopiero, 15 min, ciągły ostrzał. Szturm = śmierć.');
     end;
 
+    DialogueOn;
     ForceSay(un_humans[3], 'PZ13_01'); // Maya: "Terminal prosi o hasło..."
     CenterOnXY(56,100);
+    DialogueOff;
+    ChangeMissionObjectives('OBJ_13');
+    SaveForQuickRestart;
 end;
 
 // Hack terminali — Maya w strefie terminala (area_term1..4), postęp co 1s

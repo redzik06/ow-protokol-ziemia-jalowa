@@ -80,9 +80,13 @@ begin
     else if difficulty = 1 then for i:=1 to 6 do begin uc_x:= 30+Rand(0,60); uc_y:=24; CreateHuman; end
     else for i:=1 to 8 do begin uc_x:= 30+Rand(0,60); uc_y:=24; CreateHuman; end;
 
+    DialogueOn;
     ForceSay(un_humans[2], 'PZ12_01'); // Viktor: "Ty zdradziłeś Legion..."
     ForceSay(un_humans[4], 'PZ12_02'); // Karim: "Chcesz gonić po lodzie? To samobójstwo..."
     CenterOnXY(60,24);
+    DialogueOff;
+    ChangeMissionObjectives('OBJ_12');
+    SaveForQuickRestart;
 end;
 
 // Lód pęka na Trudnym: HT na lodzie traci 1 HP/s (Mastodon nie)

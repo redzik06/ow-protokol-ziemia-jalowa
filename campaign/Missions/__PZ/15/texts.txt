@@ -1,5 +1,8 @@
 // Misja 15 - Ostatni Œwit
 
+$ OBJ_15
+- Uruchom filtr. Prze¿yj.
+
 $ PZ15_01
 - EON-2 jest mój. By³ mój, zanim wy nauczyliœcie siê go pisaæ.
 

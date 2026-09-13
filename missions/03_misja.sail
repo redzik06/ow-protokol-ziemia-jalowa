@@ -76,6 +76,7 @@ begin
 
     // Poprawka sensu 03->05: Viktor dostaje rozkaz Mirona Karpova via radio w 03
     Wait(5$0);
+    DialogueOn;
     ForceSay(un_lina, 'PZ03_01'); // Lina: "Filtr? Mam. Działa? Też mam. Oba nie naraz."
     Wait(2$0);
     // Radio Mirona
@@ -85,6 +86,9 @@ begin
     ForceSay(un_humans[0], 'PZ03_03'); // Elena: "12 minut do zamieci. 12 minut do bycia pyłem. Romantyczne." // na Średnim
 
     CenterOnXY(40,40);
+    DialogueOff;
+    ChangeMissionObjectives('OBJ_03');
+    SaveForQuickRestart;
 end;
 
 // Schronienie: eventy wejścia/wyjścia z budynków (zamiast IsInBuilding)

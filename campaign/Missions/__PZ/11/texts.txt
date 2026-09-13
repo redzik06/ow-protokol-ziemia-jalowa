@@ -1,5 +1,8 @@
 // Misja 11 - Zamarzniêta Pamiêæ
 
+$ OBJ_11
+- ZnajdŸ rdzeñ EON-2.
+
 $ PZ11_01
 - Ciemno jak w dupie. I tak samo zimno.
 

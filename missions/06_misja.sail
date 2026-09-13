@@ -68,10 +68,14 @@ begin
         wybor_left := 30;
     end;
 
+    DialogueOn;
     ForceSay(un_humans[0], 'PZ06_01'); // Rook: "Mam wszystko..."
     Wait(2$0);
     ForceSay(un_humans[4], 'PZ06_02'); // Alya: "Mogę was zabić, mogę was kupić..."
     CenterOnXY(32,32);
+    DialogueOff;
+    ChangeMissionObjectives('OBJ_06');
+    SaveForQuickRestart;
 end;
 
 // Dialog branch — wybór rekruta (vault 01 - Bohaterowie, 03 - Kto Kogo Odstrzeli)

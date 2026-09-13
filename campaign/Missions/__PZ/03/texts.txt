@@ -1,5 +1,8 @@
 // Misja 03 - Pierwsza Pomoc
 
+$ OBJ_03
+- Zbierz leki i filtry. Ewakuuj siê.
+
 $ PZ03_01
 - Filtr? Mam. Dzia³a? Te¿ mam. Oba nie naraz — wybieraj.
 

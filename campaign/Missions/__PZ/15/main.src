@@ -86,9 +86,13 @@ begin
     // Wrogowie — Legion + RU resztki — skalowani
     // £atwy 4 co 120s, Œredni 6 co 90s, Trudny 8 co 60s non-stop
 
+    DialogueOn;
     ForceSay(un_humans[0], 'PZ15_01'); // Elena vs Alya
     ForceSay(un_humans[4], 'PZ15_02'); // Karim?
     CenterOnXY(40,40);
+    DialogueOff;
+    ChangeMissionObjectives('OBJ_15');
+    SaveForQuickRestart;
 end;
 
 // Uruchomienie filtra — Yuri (un_humans[1]) lub Farid (branch) w area_terminal

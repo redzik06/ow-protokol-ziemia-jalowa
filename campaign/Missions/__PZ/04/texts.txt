@@ -1,5 +1,8 @@
 // Misja 04 - Cmentarzysko Czo³gów
 
+$ OBJ_04
+- Zdemontuj 4 wraki. Nie ha³asuj.
+
 $ PZ04_01
 - Cicho. Ka¿dy strza³ to zaproszenie dla Ma³poludów. A nie jesteœmy gospodarzami.
 

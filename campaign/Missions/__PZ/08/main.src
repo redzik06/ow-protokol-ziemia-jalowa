@@ -75,8 +75,12 @@ begin
         Hint('Trudny: daleko + strze¿ona, próg 140, fale 8 co 45s. Warsztat = pu³apka.');
     end;
 
+    DialogueOn;
     ForceSay(un_humans[3], 'PZ08_01'); // Maya: "Spawaj szybciej..."
     CenterOnXY(40,32);
+    DialogueOff;
+    ChangeMissionObjectives('OBJ_08');
+    SaveForQuickRestart;
 end;
 
 // Czêœci 4 (area_czesc1..4 na mapie) — wejœcie cz³owieka = czêœæ, raz ka¿da

@@ -63,10 +63,14 @@ begin
     else if difficulty = 1 then Hint('Średni: wyłącza 10s, cofka -5, cooldown 5s. Ucz się trasy, pieszo obejdziesz.')
     else Hint('Trudny: wyłącza 15s, cofka -8, cooldown 7s, ciaśniej. Rozdziel konwój — zwiad pieszo.');
 
+    DialogueOn;
     ForceSay(un_humans[1], 'PZ09_01'); // Yuri: "Sublimacja odsłoniła metal — to EON-2! Leżał pod lodem 6 miesięcy!"
     Wait(2$0);
     ForceSay(un_humans[4], 'PZ09_02'); // Karim: "A ja myślałem że to tylko ładne światło..."
     CenterOnXY(56,100);
+    DialogueOff;
+    ChangeMissionObjectives('OBJ_09');
+    SaveForQuickRestart;
 end;
 
 // Anomalie co 0.5s — jawne bloki per pojazd (bez var-parametrów)

@@ -80,10 +80,14 @@ begin
     // Latarka: oświetlenie map-side (Edytor) — SAIL nie ma CreateLight
 
     // Poprawka sensu 11: EON-2 leżał pod lodem 6 mies., sublimacja 09 go odsłoniła
+    DialogueOn;
     ForceSay(un_humans[0], 'PZ11_01'); // Elena: "Ciemno jak w dupie..."
     Wait(1$0);
     ForceSay(un_humans[1], 'PZ11_02'); // Yuri: "Latarka działa. Dopóki bateria..."
     CenterOnXY(32,60);
+    DialogueOff;
+    ChangeMissionObjectives('OBJ_11');
+    SaveForQuickRestart;
 end;
 
 // Bateria latarki — co 60s/45s spada na Średnim/Trudnym

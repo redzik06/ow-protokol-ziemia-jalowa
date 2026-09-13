@@ -1,5 +1,8 @@
 // Misja 05 - Brama na Pó³noc
 
+$ OBJ_05
+- Zcraftuj ³adunki, wysadŸ barykadê.
+
 $ PZ05_01
 - Jak wybuchnie za wczeœnie, to przynajmniej nie us³yszê narzekañ.
 

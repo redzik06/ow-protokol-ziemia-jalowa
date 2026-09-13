@@ -61,9 +61,13 @@ begin
         Hint('Trudny: złoża daleko i strzeżone, fala 8 + Behemoth.');
     end;
 
+    DialogueOn;
     ForceSay(un_humans[3], 'PZ05_01'); // Maya: "Jak wybuchnie za wcześnie..."
     ForceSay(un_humans[2], 'PZ05_02'); // Viktor: "Przepraszam, Siergiej. Ale ty byś nas zostawił."
     CenterOnXY(32,85);
+    DialogueOff;
+    ChangeMissionObjectives('OBJ_05');
+    SaveForQuickRestart;
 end;
 
 // Materiały: Maya zbiera w złożach (area_mat1..3 na mapie), raz każde

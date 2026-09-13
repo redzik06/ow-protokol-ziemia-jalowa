@@ -83,8 +83,12 @@ begin
     // W Edytorze: wrak_1 40,40 2 60,40 3 40,60 4 60,60
 
     // Noc 22:00 — klimat mapy (Edytor)
+    DialogueOn;
     ForceSay(un_humans[3], 'PZ04_01'); // Maya: "Cicho. Każdy strzał to zaproszenie..."
     CenterOnXY(50,85);
+    DialogueOff;
+    ChangeMissionObjectives('OBJ_04');
+    SaveForQuickRestart;
 end;
 
 // Demontaż — tylko Maya (un_humans[3], Inżynier), czas skalowany, raz per wrak

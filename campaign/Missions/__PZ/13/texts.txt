@@ -1,5 +1,8 @@
 // Misja 13 - Baza Eos — Przedpola
 
+$ OBJ_13
+- Przejmij 4 terminale.
+
 $ PZ13_01
 - Terminal prosi o has³o. Has³o: „nie zabijaj mnie”. Wpisujê.
 

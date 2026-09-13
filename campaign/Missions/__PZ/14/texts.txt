@@ -1,5 +1,8 @@
 // Misja 14 - Bitwa w Kraterze
 
+$ OBJ_14
+- Rozbrój 3 silosy.
+
 $ PZ14_01
 - Podpisa³eœ, Jurij? Teraz patrz, jak dzia³a d³ugopis.
 

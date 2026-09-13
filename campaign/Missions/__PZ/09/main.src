@@ -63,10 +63,14 @@ begin
     else if difficulty = 1 then Hint('Œredni: wy³¹cza 10s, cofka -5, cooldown 5s. Ucz siê trasy, pieszo obejdziesz.')
     else Hint('Trudny: wy³¹cza 15s, cofka -8, cooldown 7s, ciaœniej. Rozdziel konwój — zwiad pieszo.');
 
+    DialogueOn;
     ForceSay(un_humans[1], 'PZ09_01'); // Yuri: "Sublimacja ods³oni³a metal — to EON-2! Le¿a³ pod lodem 6 miesiêcy!"
     Wait(2$0);
     ForceSay(un_humans[4], 'PZ09_02'); // Karim: "A ja myœla³em ¿e to tylko ³adne œwiat³o..."
     CenterOnXY(56,100);
+    DialogueOff;
+    ChangeMissionObjectives('OBJ_09');
+    SaveForQuickRestart;
 end;
 
 // Anomalie co 0.5s — jawne bloki per pojazd (bez var-parametrów)

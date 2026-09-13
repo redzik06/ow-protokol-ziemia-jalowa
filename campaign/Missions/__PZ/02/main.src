@@ -86,6 +86,7 @@ begin
     end;
 
     // Hint start postapo czarny humor
+    DialogueOn;
     ForceSay(un_humans[0], 'PZ02_01'); // Elena: "Kanion Wiatru — jedyna droga. I jedyny powód by tu wracaæ to ropa."
     Wait(1$0);
     ForceSay(un_humans[2], 'PZ02_02'); // Viktor: "To nie ropa. To krew bitwy. Ale pojadê i na tym."
@@ -95,6 +96,9 @@ begin
     wrak_full[0] := 1; wrak_full[1] := 1; wrak_full[2] := 1; wrak_full[3] := 1; wrak_full[4] := 1;
 
     CenterOnXY(GetX(un_transporterHT), GetY(un_transporterHT));
+    DialogueOff;
+    ChangeMissionObjectives('OBJ_02');
+    SaveForQuickRestart;
 end;
 
 // === EVERY — paliwo silnikiem gry (SetFuel start, HUD co 30s) ===

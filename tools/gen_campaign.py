@@ -88,6 +88,22 @@ MISSIONS = [
    ("Farid", "Uczyłaś mnie leczyć. Teraz uczę cię umierać. Symetria.")]),
 ]
 
+OBJ = {1: "Ucieknij HT na północ. Ocal drużynę.",
+       2: "Przejedź kanion. Tankuj Mayą we wrakach.",
+       3: "Zbierz leki i filtry. Ewakuuj się.",
+       4: "Zdemontuj 4 wraki. Nie hałasuj.",
+       5: "Zcraftuj ładunki, wysadź barykadę.",
+       6: "Porozmawiaj z frakcjami. Wybierz rekruta.",
+       7: "Broń przepompowni.",
+       8: "Zbierz części. Złóż drugi pojazd.",
+       9: "Przeprowadź konwój przez anomalie.",
+       10: "Napraw wieżę, nadaj sygnał, obroń.",
+       11: "Znajdź rdzeń EON-2.",
+       12: "Zniszcz dowódcę. Strać max 1 pojazd.",
+       13: "Przejmij 4 terminale.",
+       14: "Rozbrój 3 silosy.",
+       15: "Uruchom filtr. Przeżyj."}
+
 TEXTS = ROOT / "strings" / "texts_pl.txt"
 
 
@@ -110,13 +126,11 @@ def w_cp1250(path, text):
 
 def w_utf16(path, text):
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_bytes(text.replace("\n", "\r\n").encode("utf-16-le") and
-                     ("\ufeff" + text.replace("\n", "\r\n")).encode("utf-16-le"))
+    path.write_bytes(("\ufeff" + text.replace("\n", "\r\n")).encode("utf-16-le"))
 
 
 def main():
     per_mission = parse_texts()
-    # --- Missions/__PZ/NN ---
     for num, name, sub, coords, brief, dlg in MISSIONS:
         nn = f"{num:02d}"
         sail = (ROOT / "missions" / f"{nn}_misja.sail").read_text(encoding="utf-8")
@@ -127,11 +141,11 @@ def main():
         w_cp1250(mdir / "description.txt",
                  "MISSION\n  MAP map.txt\n  TEXTS texts.txt\n  SOURCES sources.txt\n"
                  f"  CAMPAIGN 1 {num}\n  AUTOR PZJ\nEND_OF_MISSION\n")
-        lines = [f"// Misja {nn} - {name}"]
+        lines = [f"// Misja {nn} - {name}", "",
+                 f"$ OBJ_{nn}", f"- {OBJ[num]}"]
         for ident, val in per_mission.get(num, []):
             lines += ["", f"$ {ident}", f"- {val}"]
         w_cp1250(mdir / "texts.txt", "\n".join(lines) + "\n")
-    # --- Campaigns/PZ ---
     dat = ['CAMPAIGN "Protokół Ziemia Jałowa"',
            "  MISSION 0", '    NAME "Prolog"', "    NEXT 1"]
     for num, name, sub, coords, brief, dlg in MISSIONS:
@@ -158,27 +172,9 @@ def main():
             lines += [f"$ {sp}", f"- {tx}", ""]
         for rel in [f"Campaigns/PZ/Txt{nn}.wri", f"Campaigns/PZ/#pol/Txt{nn}.wri"]:
             w_utf16(OUT / rel, "\n".join(lines))
-    # --- Texts/LangPOL.wri (identy globalne: cele + porażki) ---
-    g = ["// Protokół Ziemia Jałowa - teksty globalne"]
-    for ident, val in per_mission.get(0, []):
-        g += [f"$ {ident}", f"- {val}", ""]
-    obj = {1: "Ucieknij HT na północ. Ocal drużynę.",
-           2: "Przejedź kanion. Tankuj Mayą we wrakach.",
-           3: "Zbierz leki i filtry. Ewakuuj się.",
-           4: "Zdemontuj 4 wraki. Nie hałasuj.",
-           5: "Zcraftuj ładunki, wysadź barykadę.",
-           6: "Porozmawiaj z frakcjami. Wybierz rekruta.",
-           7: "Broń przepompowni.",
-           8: "Zbierz części. Złóż drugi pojazd.",
-           9: "Przeprowadź konwój przez anomalie.",
-           10: "Napraw wieżę, nadaj sygnał, obroń.",
-           11: "Znajdź rdzeń EON-2.",
-           12: "Zniszcz dowódcę. Strać max 1 pojazd.",
-           13: "Przejmij 4 terminale.",
-           14: "Rozbrój 3 silosy.",
-           15: "Uruchom filtr. Przeżyj."}
+    g = ["// Protokół Ziemia Jałowa - teksty globalne", ""]
     for num in range(1, 16):
-        g += [f"$ OBJ_{num:02d}", f"- {obj[num]}", ""]
+        g += [f"$ OBJ_{num:02d}", f"- {OBJ[num]}", ""]
     w_utf16(OUT / "Texts" / "LangPOL.wri", "\n".join(g))
     n = sum(1 for _ in OUT.rglob("*") if _.is_file())
     print(f"campaign package: {n} files in {OUT}")

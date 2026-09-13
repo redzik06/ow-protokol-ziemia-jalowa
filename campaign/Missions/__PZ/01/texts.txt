@@ -1,5 +1,8 @@
 // Misja 01 - Ostatnia Iskra
 
+$ OBJ_01
+- Ucieknij HT na pó³noc. Ocal dru¿ynê.
+
 $ PZ01_01
 - Alpha pad³a. Zosta³ HT, piêciu ludzi i klucz 17. Nie pytaj, gdzie reszta — tam, gdzie my bêdziemy za godzinê, jeœli nie ruszymy dupy.
 

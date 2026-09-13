@@ -1,5 +1,8 @@
 // Misja 02 - Droga przez Rdzê
 
+$ OBJ_02
+- PrzejedŸ kanion. Tankuj May¹ we wrakach.
+
 $ PZ02_01
 - Kanion Wiatru — jedyna droga. I jedyny powód, by tu wracaæ, to ropa.
 

@@ -1,5 +1,8 @@
 // Misja 09 - Anomalia £za
 
+$ OBJ_09
+- PrzeprowadŸ konwój przez anomalie.
+
 $ PZ09_01
 - Sublimacja ods³oni³a metal — to EON-2! Le¿a³ pod lodem 6 miesiêcy, niewidoczny.
 

@@ -1,5 +1,8 @@
 // Misja 07 - Czysty Tlen
 
+$ OBJ_07
+- Broñ przepompowni.
+
 $ PZ07_01
 - Pr¹d jest. Dopóki ktoœ nie kichnie.
 

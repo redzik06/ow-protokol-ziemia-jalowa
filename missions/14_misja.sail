@@ -103,8 +103,12 @@ begin
         else Hint('Trudny: 20s, fale 8 co 30s, Behemoth +2 HT. Sprint + podział.');
     end;
 
+    DialogueOn;
     ForceSay(un_humans[1], 'PZ14_01'); // Yuri: "Podpisałem..."
     CenterOnXY(64,100);
+    DialogueOff;
+    ChangeMissionObjectives('OBJ_14');
+    SaveForQuickRestart;
 end;
 
 // Rozbrajanie — Maya w strefie silosu (area_silos_1..3), postęp co 1s

@@ -1,5 +1,8 @@
 // Misja 06 - Wolne Targowisko
 
+$ OBJ_06
+- Porozmawiaj z frakcjami. Wybierz rekruta.
+
 $ PZ06_01
 - Mam wszystko. Ropê, filtry, nadziejê. Nadzieja najdro¿sza. I najbardziej przeterminowana.
 

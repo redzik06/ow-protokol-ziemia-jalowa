@@ -1,5 +1,8 @@
 // Misja 08 - Wzmocnienie Konwoju
 
+$ OBJ_08
+- Zbierz czêœci. Z³ó¿ drugi pojazd.
+
 $ PZ08_01
 - Spawaj szybciej. Legion puka. I nie puka delikatnie.
 

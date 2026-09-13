@@ -61,9 +61,13 @@ begin
         Hint('Trudny: z³o¿a daleko i strze¿one, fala 8 + Behemoth.');
     end;
 
+    DialogueOn;
     ForceSay(un_humans[3], 'PZ05_01'); // Maya: "Jak wybuchnie za wczeœnie..."
     ForceSay(un_humans[2], 'PZ05_02'); // Viktor: "Przepraszam, Siergiej. Ale ty byœ nas zostawi³."
     CenterOnXY(32,85);
+    DialogueOff;
+    ChangeMissionObjectives('OBJ_05');
+    SaveForQuickRestart;
 end;
 
 // Materia³y: Maya zbiera w z³o¿ach (area_mat1..3 na mapie), raz ka¿de

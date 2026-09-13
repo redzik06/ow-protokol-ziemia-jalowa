@@ -90,9 +90,13 @@ begin
         else PlaceMine(90, 48 + m, 1, 0); // wschód
     end;
 
+    DialogueOn;
     ForceSay(un_humans[3], 'PZ10_01'); // Maya naprawia
     ForceSay(un_humans[1], 'PZ10_02'); // Yuri nadaje
     CenterOnXY(48,48);
+    DialogueOff;
+    ChangeMissionObjectives('OBJ_10');
+    SaveForQuickRestart;
 end;
 
 // Naprawa wie¿y — Maya 30s w strefie wie¿y (auto, postêp)

@@ -1,5 +1,8 @@
 // Misja 10 - Przechwycenie Sygna³u
 
+$ OBJ_10
+- Napraw wie¿ê, nadaj sygna³, obroñ.
+
 $ PZ10_01
 - Wie¿a naprawiona! Nadaj sygna³ Naukowcem 15 sekund.
 

@@ -1,5 +1,8 @@
 // Misja 12 - Czerwony Zmierzch
 
+$ OBJ_12
+- Zniszcz dowódcê. Straæ max 1 pojazd.
+
 $ PZ12_01
 - Ty zdradzi³eœ Legion, ja zdradzi³em rozkazy. Jesteœmy kwita. Teraz spierdalaj, zanim zmieniê zdanie.
 

@@ -77,8 +77,12 @@ begin
     else if difficulty = 1 then Hint('Œredni: 500 HP, 8 min, fale 6 co 90s.')
     else Hint('Trudny: 300 HP, 6 min, fale 8 co 60s, ci¹g³a naprawa.');
 
+    DialogueOn;
     ForceSay(un_humans[1], 'PZ07_01'); // Yuri: "Pr¹d jest. Dopóki ktoœ nie kichnie."
     CenterOnXY(48,48);
+    DialogueOff;
+    ChangeMissionObjectives('OBJ_07');
+    SaveForQuickRestart;
 end;
 
 // Naprawa generatora — tylko Maya w œrodku (flagi z EnterBuilding/LeaveBuilding)

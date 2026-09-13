@@ -105,12 +105,16 @@ begin
     else ucieczka_left := 600;
 
     // Dialog start — postapo czarny humor, ForceSay
+    DialogueOn;
     ForceSay(un_humans[0], 'PZ01_01'); // Elena: "Alpha padła. Został HT, 5 ludzi i klucz 17..."
     Wait(2$0);
     ForceSay(un_humans[1], 'PZ01_02'); // Yuri: "Nie umieram. Tylko testuję grawitację."
     if difficulty = 0 then Hint('Łatwy: masz 20 min i 2 patrole. Poruszaj się cicho. HT 36,36.')
     else if difficulty = 1 then Hint('Poruszaj się cicho. Każdy strzał = wataha Małpoludów. HT 36,36.')
     else Hint('Trudny: 10 min, 4 patrole, HT 50% HP. Powodzenia.');
+    DialogueOff;
+    ChangeMissionObjectives('OBJ_01');
+    SaveForQuickRestart;
 end;
 
 // === EVERY — mechanika skradania: hałas (Attacks) przyciąga Małpoludy ===
